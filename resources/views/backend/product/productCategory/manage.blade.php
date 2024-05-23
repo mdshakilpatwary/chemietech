@@ -1,12 +1,11 @@
 @extends('backend.master')
 @section('main_body_content_part')
 <div class="pagetitle">
-    <h1>Product Image Manage</h1>
+    <h1>Product Category Manage</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item ">Product</li>
-        <li class="breadcrumb-item ">Image</li>
+        <li class="breadcrumb-item ">Category</li>
         <li class="breadcrumb-item active">Manage</li>
       </ol>
     </nav>
@@ -19,8 +18,8 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">All Product Image </h5>
-                <a href="{{route('product.image.element')}}" class="btn btn-sm btn-success">Add</a>
+                <h5 class="card-title">All Product Category </h5>
+                <a href="{{route('category')}}" class="btn btn-sm btn-success">Add</a>
   
                 <!-- Table with stripped rows -->
                     
@@ -33,29 +32,35 @@
                                 <thead>
                                     <tr>
                                         <th>#Sl</th>
-                                        <th>Product Name</th>
-                                        <th>Product Image</th>
+                                        <th>Category Name</th>
+                                        <th>Description</th>
+                                        <th>Image</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @if(count($product_image)>0)
-                                   @foreach($product_image as $product_img)
+                                   @if(count($categories)>0)
+                                   @foreach($categories as $category)
         
                                    <tr >
                                        <td>{{$sl++}}</td>
-                                       <td>{{optional($product_img->product)->p_name}}</td
-                                       >
+                                       <td>{{$category->name}}</td>
+                                       <td>{{$category->description}}</td>
                                        
                                        <td>
-                                           <img src="{{asset('uploads/product/'.$product_img->image)}}" alt="" title="uoihyuy" style="width: 120px; height: 60px;">
+                                           <img src="{{asset($category->image)}}" alt=""  style="width: 120px; height: 60px;">
                                        </td>
                                        <td >
-                                        Active
+                                        @if($category->status == 1)
+                                        <a href="{{route('category.status',$category->id)}}" class="btn btn-sm btn-outline-success">Active</a>
+                                        @else
+                                        <a href="{{route('category.status',$category->id)}}" class="btn btn-sm btn-outline-warning">Inactive</a>
+                                        @endif
                                        </td>
                                        <td >
-                                           <a href="{{route('product.image.delete',$product_img->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
+                                           <a href="{{route('category.edit',$category->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                                           <a href="{{route('category.delete',$category->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
                                        </td>
                                    </tr>
                                @endforeach

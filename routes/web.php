@@ -7,7 +7,8 @@ use App\Http\Controllers\Backend\PageBannerController;
 use App\Http\Controllers\Backend\PageElementController;
 use App\Http\Controllers\Backend\AboutElementController;
 use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\Backend\ProductElementController;
+use App\Http\Controllers\Backend\ProductCatController;
+use App\Http\Controllers\Backend\ProductSubCatController;
 use App\Http\Controllers\Backend\ExpertisePageController;
 use App\Http\Controllers\Backend\CareerController;
 use App\Http\Controllers\Backend\CsrPageController;
@@ -108,24 +109,27 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/product/delete/{id}', 'delete')->name('product.delete');
     });
 
-    //product element route part controller group------- 07
-    Route::controller(ProductElementController::class)->group(function () {
-        // product Image part 
-        Route::get('/product/image/element/', 'productImage')->name('product.image.element');
-        Route::get('/product/image/manage/element/', 'productImageManage')->name('product.manage.image.element');
-        Route::post('/product/image/store/element/', 'productImageStore')->name('product.image.store');
-        Route::get('/product/image/delete/{id}', 'productImageDelete')->name('product.image.delete');
-
-        // Product spacific part 
-        Route::get('/product/spacific/element/', 'productSpacific')->name('product.spacific.element');
-        Route::get('/product/spacific/manage/element/', 'productSpacificManage')->name('product.manage.spacific.element');
-        Route::post('/product/spacific/store/element/', 'productSpacificStore')->name('product.spacific.store');
-        Route::post('/product/spacific/update/element/{id}', 'productSpacificUpdate')->name('product.spacific.update');
-        Route::get('/product/spacific/edit/{id}', 'productSpacificEdit')->name('product.spacific.edit');
-        Route::get('/product/spacific/delete/{id}', 'productSpacificDelete')->name('product.spacific.delete');
-
+    //product category route part controller group------- 07
+    Route::controller(ProductCatController::class)->group(function () {
+        Route::get('/category', 'index')->name('category');
+        Route::post('/category/store', 'store')->name('category.store');
+        Route::post('/category/update/{id}', 'update')->name('category.update');
+        Route::get('/category/manage', 'manage')->name('category.manage');
+        Route::get('/category/edit/{id}', 'edit')->name('category.edit');
+        Route::get('/category/delete/{id}', 'delete')->name('category.delete');
+        Route::get('/category/status/{id}', 'status')->name('category.status');
     });
-    //Career route part controller group------- 07
+    //product Subcategory route part controller group------- 08
+    Route::controller(ProductSubCatController::class)->group(function () {
+        Route::get('/subcategory', 'index')->name('subcategory');
+        Route::post('/subcategory/store', 'store')->name('subcategory.store');
+        Route::post('/subcategory/update/{id}', 'update')->name('subcategory.update');
+        Route::get('/subcategory/manage', 'manage')->name('subcategory.manage');
+        Route::get('/subcategory/edit/{id}', 'edit')->name('subcategory.edit');
+        Route::get('/subcategory/delete/{id}', 'delete')->name('subcategory.delete');
+        Route::get('/subcategory/status/{id}', 'status')->name('subcategory.status');
+    });
+    //Career route part controller group------- 09
     Route::controller(CareerController::class)->group(function () {
         // career part 
         Route::get('/career', 'index')->name('career');
@@ -142,7 +146,7 @@ Route::middleware('auth','role:Admin')->group(function () {
 
     });
 
-    //Expertise page route part controller group------- 08
+    //Expertise page route part controller group------- 10
     Route::controller(ExpertisePageController::class)->group(function () {
         // career part 
         Route::get('/expertise/element', 'index')->name('expertise.element');
@@ -154,7 +158,7 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/expertise/element/status/{id}', 'status')->name('expertise.element.status');
 
     });
-    //Csr page route part controller group------- 09
+    //Csr page route part controller group------- 11
     Route::controller(CsrPageController::class)->group(function () {
         // casr common part 
         Route::get('/csr/common', 'csrCommon')->name('csr.common');
@@ -180,7 +184,7 @@ Route::middleware('auth','role:Admin')->group(function () {
 
     });
     
-        //menubar route part controller group------- 09
+        //menubar route part controller group------- 12
     Route::controller(MenuController::class)->group(function () {
         // manu part 
         Route::get('/header/menu', 'create')->name('menu.create');

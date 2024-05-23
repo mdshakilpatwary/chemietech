@@ -1,12 +1,11 @@
 @extends('backend.master')
 @section('main_body_content_part')
 <div class="pagetitle">
-    <h1>Product Spacification Manage</h1>
+    <h1>Product Subcategory Manage</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item ">Product</li>
-        <li class="breadcrumb-item ">Spacification</li>
+        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
+        <li class="breadcrumb-item ">Sub-Category</li>
         <li class="breadcrumb-item active">Manage</li>
       </ol>
     </nav>
@@ -19,8 +18,8 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">All Product Spacification </h5>
-                <a href="{{route('product.spacific.element')}}" class="btn btn-sm btn-success">Add</a>
+                <h5 class="card-title">All Product Sub Category </h5>
+                <a href="{{route('subcategory')}}" class="btn btn-sm btn-success">Add</a>
   
                 <!-- Table with stripped rows -->
                     
@@ -33,25 +32,30 @@
                                 <thead>
                                     <tr>
                                         <th>#Sl</th>
-                                        <th>Product Name</th>
-                                        <th>Spacification Title</th>
-                                        <th>Accordin Text</th>
+                                        <th>Sub Category Name</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @if(count($specifics)>0)
-                                   @foreach($specifics as $specific)
+                                   @if(count($subcategories)>0)
+                                   @foreach($subcategories as $subcategory)
         
                                    <tr >
                                        <td>{{$sl++}}</td>
-                                       <td>{{optional($specific->product)->p_name}}</td>
-                                       <td>{{$specific->title}}</td>
-                                       <td>{!!$specific->textContent!!}</td>
-                                       
+                                       <td>{{$subcategory->name}}</td>
+                                       <td>{{$subcategory->category->name}}</td>         
                                        <td >
-                                         <a href="{{route('product.spacific.delete',$specific->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
-                                           <a href="{{route('product.spacific.edit',$specific->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
+                                        @if($subcategory->status == 1)
+                                        <a href="{{route('subcategory.status',$subcategory->id)}}" class="btn btn-sm btn-outline-success">Active</a>
+                                        @else
+                                        <a href="{{route('subcategory.status',$subcategory->id)}}" class="btn btn-sm btn-outline-warning">Inactive</a>
+                                        @endif
+                                       </td>
+                                       <td >
+                                           <a href="{{route('subcategory.edit',$subcategory->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                                           <a href="{{route('subcategory.delete',$subcategory->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
                                        </td>
                                    </tr>
                                @endforeach

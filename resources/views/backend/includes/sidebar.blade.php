@@ -145,13 +145,11 @@
         <ul id="components-nav-4" class="nav-content collapse {{ Route::is('product') || Route::is('product.manage')||Route::is('product.edit')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
  
           <li>
-            {{-- class="{{ Route::is('header.info*')? 'active' : '' }}" --}}
             <a href="{{route('product')}}" class="{{ Route::is('product')? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Add Product</span>
             </a>
           </li>
           <li>
-            {{-- class="{{ Route::is('header.info*')? 'active' : '' }}" --}}
             <a href="{{route('product.manage')}}" class="{{ Route::is('product.manage')? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Manage Product</span>
             </a>
@@ -159,42 +157,42 @@
         </ul>
       </li>
       <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-5" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('product.image.element') || Route::is('product.manage.image.element')? '#f6f9ff' : '' }} ; ">
-          <i class="bi bi-images"></i><span>Product Image</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed " data-bs-target="#components-nav-11" data-bs-toggle="collapse" href="#" style="background: {{ Route::is('category') || Route::is('category.manage')||Route::is('category.edit')? '#f6f9ff' : '' }} ;">
+          <i class="bi bi-box2-fill"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav-5" class="nav-content collapse {{ Route::is('product.image.element') || Route::is('product.manage.image.element')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav-11" class="nav-content collapse {{ Route::is('category') || Route::is('category.manage')||Route::is('category.edit')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
  
           <li>
-            <a href="{{route('product.image.element')}}" class="{{ Route::is('product.image.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Add Image</span>
+            <a href="{{route('category')}}" class="{{ Route::is('category')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add category</span>
             </a>
           </li>
           <li>
-            <a href="{{route('product.manage.image.element')}}" class="{{ Route::is('product.manage.image.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Manage Image</span>
+            <a href="{{route('category.manage')}}" class="{{ Route::is('category.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage category</span>
             </a>
           </li>
         </ul>
       </li>
       <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-6" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('product.spacific.element*') || Route::is('product.manage.spacific.element*') ||Route::is('product.spacific.edit*')? '#f6f9ff' : '' }} ; ">
-          <i class="bi bi-ui-radios"></i><span>Product Spacifications</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed " data-bs-target="#subCategory" data-bs-toggle="collapse" href="#" style="background: {{ Route::is('subcategory') || Route::is('subcategory.manage')||Route::is('subcategory.edit')? '#f6f9ff' : '' }} ;">
+          <i class="bi bi-box2-fill"></i><span>SubCategory</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav-6" class="nav-content collapse {{ Route::is('product.spacific.element*') || Route::is('product.manage.spacific.element*') ||Route::is('product.spacific.edit*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+        <ul id="subCategory" class="nav-content collapse {{ Route::is('subcategory') || Route::is('subcategory.manage')||Route::is('subcategory.edit')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
  
           <li>
-            {{-- class="{{ Route::is('header.info*')? 'active' : '' }}" --}}
-            <a href="{{route('product.spacific.element')}}" class="{{ Route::is('product.spacific.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Add Spacification</span>
+            <a href="{{route('subcategory')}}" class="{{ Route::is('subcategory')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add Subcategory</span>
             </a>
           </li>
           <li>
-            <a href="{{route('product.manage.spacific.element')}}" class="{{ Route::is('product.manage.spacific.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Manage Spacification</span>
+            <a href="{{route('subcategory.manage')}}" class="{{ Route::is('subcategory.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage Subcategory</span>
             </a>
           </li>
         </ul>
       </li>
+ 
       
     <!-- End Profile Page Nav -->
         <li class="nav-heading">Nave-Item</li>

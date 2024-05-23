@@ -1,12 +1,12 @@
 @extends('backend.master')
 @section('main_body_content_part')
 <div class="pagetitle">
-    <h1>Add Product Image</h1>
+    <h1>Add Product Category</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item">Product</li>
-        <li class="breadcrumb-item active">Image</li>
+        <li class="breadcrumb-item">Category</li>
+        <li class="breadcrumb-item active">Edit</li>
       </ol>
     </nav>
   </div>
@@ -18,36 +18,39 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Add Product Image</h5>
+                <h5 class="card-title">Update Category</h5>
   
                 <!-- General Form Elements -->
-                <form method="POST" action="{{route('product.image.store')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('category.update',$category->id)}}" enctype="multipart/form-data">
                 @csrf
                   <div class="row mb-3">
                       
                       <div class="offset-md-2 offset-lg-2 col-md-8 col-lg-8 col-12 col-sm-12">
                         <div class="form-group mb-3">
-                            <label class="col-form-label">Select Product</label>
-                            <select name="product_name" class="form-select" aria-label="Default select example">
-                                <option disabled selected>-----Select-----</option>
-                              @foreach($products as $product)
-                                <option value="{{$product->id}}">{{$product->p_name}}</option>
-                              @endforeach
-                              </select>
-                            @error('product_name')
+                            <label class="col-form-label">Category Name</label>
+                            <input type="text" name="name" class="form-control" id="" value="{{$category->name}}">
+                            @error('name')
                             <p class="text-danger">{{$message}}</p>                
                             @enderror
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="inputNumber" class=" col-form-label">Multiple Image <span style="color: #6b6868">(resolution 400x350 )</span></label>
-                            <input class="form-control file_image" type="file" name="product_image[]" multiple>
-                            @error('product_image')
+                            <label for="inputNumber" class=" col-form-label">Category Image</label>
+                            <input class="form-control file_image" type="file" name="image" >
+                            <img src="{{asset($category->image)}}" alt="" style="width: 200px; height:150px; margin-top:5px;">
+                            @error('image')
                             <p class="text-danger">{{$message}}</p> 
                             @enderror
                         </div>
+                        <div class="form-group mb-3">
+                          <label class="col-form-label">Description</label>
+                          <textarea name="description" class="form-control" id="" cols="3" rows="5">{{$category->description}}</textarea>
+                          @error('description')
+                          <p class="text-danger">{{$message}}</p>                
+                          @enderror
+                      </div>
                         <div class="submit_button_align" style="text-align: right;">
-                          <button type="submit" class="btn btn-success btn-lg">Add</button>
+                          <button type="submit" class="btn btn-success btn-lg">Update</button>
                         </div>                        
                     </div>
                     
