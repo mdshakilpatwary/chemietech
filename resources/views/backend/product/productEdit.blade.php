@@ -34,114 +34,80 @@
                 <!-- General Form Elements -->
                 <form method="POST" action="{{route('product.update',$product->id)}}" enctype="multipart/form-data">
                 @csrf
-                  <div class="row mb-3">
+                <div class="row mb-3">
                       
-                      <div class="offset-md-2 offset-lg-2 col-md-8 col-lg-8 col-12 col-sm-12">
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Product Name</label>
-                            <input type="text" class="form-control" name="product_name" value="{{$product->p_name}}">
-                            @error('product_name')
-                            <p class="text-danger">{{$message}}</p>           
-                            @enderror
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Product Headline</label>
-                            <input type="text" class="form-control" name="product_headline" value="{{$product->p_headline}}">
-                            @error('product_headline')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Simple Description </label>
-                            <textarea class="form-control" cols="5" rows="5" name="product_description"  id="editor">
-                              {!!$product->p_description!!}
-                            </textarea>                            
-                            @error('product_description')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
-      
-                        <div class="row">
-                            <div class="col-md-6 col-12 col-xl-6">
-                                <div class="form-group mb-3">
-                                  <label for="inputNumber" class=" col-form-label">Product Image <span style="color: #6b6868">(resolution 400x350 )</span></label>
-                                  <img src="{{asset('uploads/product/'.$product->p_image)}}" alt="" class="p_change_image mb-2" style="width: 150px; height: 100px; display:block;">
-                                  <input class="form-control p_file_image" type="file" id="formFile" name="product_image" >
-                                  @error('product_image')
-                                  <p class="text-danger">{{$message}}</p> 
-                                  @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12 col-xl-6">
-                                <div class="form-group mb-3">
-                                  <label for="inputNumber" class=" col-form-label">Banner Image <span style="color: #6b6868">(resolution 1200x600 )</span></label>
-                                  <img src="{{asset('uploads/product/'.$product->p_banner)}}" alt="" class="change_image mb-2" style="width: 150px; height: 100px; display:block;">
-                                  <input class="form-control file_image" type="file" id="formFile" name="product_banner" >
-                                  @error('product_banner')
-                                  <p class="text-danger">{{$message}}</p> 
-                                  @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-5 pb-2">This Image For Product Page Layout Design</div>
-                        <div class="row">
-                          <div class="col-md-6 col-12 col-xl-6">
-                              <div class="form-group mb-3">
-                                <label for="inputNumber" class=" col-form-label">Image 01 <span style="color: #6b6868">(resolution 550x600 )</span></label>
-                                <img src="{{asset('uploads/product/'.$product->image_1)}}" alt="" class="p_change_image_1 mb-2" style="width: 150px; height: 100px; display:block;">
-                                <input class="form-control p_file_image_1" type="file" id="formFile" name="image_1" >
-                                @error('product_image_1')
-                                <p class="text-danger">{{$message}}</p> 
-                                @enderror
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-12 col-xl-6">
-                              <div class="form-group mb-3">
-                                <label for="inputNumber" class=" col-form-label">Image 02 <span style="color: #6b6868">(resolution 550x600 )</span></label>
-                                <img src="{{asset('uploads/product/'.$product->image_2)}}" alt="" class="p_change_image_2 mb-2" style="width: 150px; height: 100px; display:block;">
-                                <input class="form-control p_file_image_2" type="file" id="formFile" name="image_2" >
-                                @error('image_2')
-                                <p class="text-danger">{{$message}}</p> 
-                                @enderror
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-12 col-xl-6">
-                              <div class="form-group mb-3">
-                                <label for="inputNumber" class=" col-form-label">Image 03 <span style="color: #6b6868">(resolution 500x400 )</span></label>
-                                <img src="{{asset('uploads/product/'.$product->image_3)}}" alt="" class="p_change_image_3 mb-2" style="width: 150px; height: 100px; display:block;">
-                                <input class="form-control p_file_image_3" type="file" id="formFile" name="image_3" >
-                                @error('image_3')
-                                <p class="text-danger">{{$message}}</p> 
-                                @enderror
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-12 col-xl-6">
-                              <div class="form-group mb-3">
-                                <label for="inputNumber" class=" col-form-label">Image 04 <span style="color: #6b6868">(resolution 700x500 )</span></label>
-                                <img src="{{asset('uploads/product/'.$product->image_4)}}" alt="" class="p_change_image_4 mb-2" style="width: 150px; height: 100px; display:block;">
-                                <input class="form-control p_file_image_4" type="file" id="formFile" name="image_4" >
-                                @error('image_4')
-                                <p class="text-danger">{{$message}}</p> 
-                                @enderror
-                              </div>
-                          </div>
-                          <div class="col-md-6 col-12 col-xl-6">
-                              <div class="form-group mb-3">
-                                <label for="inputNumber" class=" col-form-label">Image 05 <span style="color: #6b6868">(resolution 350x500 )</span></label>
-                                <img src="{{asset('uploads/product/'.$product->image_5)}}" alt="" class="p_change_image_5 mb-2" style="width: 150px; height: 100px; display:block;">
-                                <input class="form-control p_file_image_5" type="file" id="formFile" name="image_5" >
-                                @error('image_5')
-                                <p class="text-danger">{{$message}}</p> 
-                                @enderror
-                              </div>
-                          </div>
+                  <div class="offset-md-1 offset-lg-1 col-md-10 col-lg-10 col-12 col-sm-12">
+                   <div class="row">
+
+                    <div class="col-md-6 col-xl-6 col-lg-6 col-12 col-sm-12">
+                      <div class="form-group mb-3">
+                        <label class="col-form-label" >Select Category</label>
+                        <select name="category" id="" class="form-control" required>
+                          <option value="" disabled> -----Select-----</option>
+                          @foreach ($categories as $category)
+                          <option value="{{$category->id}}" {{ $product->category->id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                              
+                          @endforeach
+
+                        </select>
+                        <div class="invalid-feedback">Please Select product Category</div>
+                        @error('category')
+                        <p class="text-danger">{{$message}}</p>                
+                        @enderror
                       </div>
-                        <div class="submit_button_align" style="text-align: right;">
-                          <button type="submit" class="btn btn-success btn-lg">Update</button>
-                        </div>
+                    
+                    </div>
+                    <div class="col-md-6 col-xl-6 col-lg-6 col-12 col-sm-12">
+                      <div class="form-group mb-3">
+                        <label class="col-form-label" >Select Sub Category</label>
+                        <select name="subcategory" id="" class="form-control" required>
+                          <option value="" disabled> -----Select-----</option>
+                          @foreach ($subcategories as $subcategory)
+                          <option value="{{$subcategory->id}}" {{ $product->category->id == $subcategory->id ? 'selected' : '' }}>{{$subcategory->name}}</option>
+                              
+                          @endforeach
+
+                        </select>
+                        @error('subcategory')
+                        <p class="text-danger">{{$message}}</p>                
+                        @enderror
+                      </div>
+                    
+                    </div>
+
+
+                   </div>
+                    <div class="form-group mb-3">
+                        <label for="inputText" class="col-form-label">Product Name</label>
+                        <input type="text" class="form-control" name="name" value="{{$product->name}}" >
+                        @error('product_name')
+                        <p class="text-danger">{{$message}}</p>           
+                        @enderror
                     </div>
                     
-                  </div>
+                    <div class="form-group mb-3">
+                        <label for="inputText" class="col-form-label">Short Description </label>
+                        <textarea class="form-control" cols="5" rows="5" name="description"  id="" >{{$product->description}}</textarea>                            
+                        @error('description')
+                        <p class="text-danger">{{$message}}</p> 
+                        @enderror
+                    </div>
+  
+                      <div class="form-group mb-3">
+                        <label for="inputNumber" class=" col-form-label">Product Image <span style="color: #6b6868">(resolution 400x350 )</span></label>
+                        <img src="{{asset($product->image)}}" alt="" class="p_change_image mb-2" style="width: 150px; height: 100px; display:block;">
+                        <input class="form-control p_file_image" type="file" id="formFile" name="image">
+                        @error('image')
+                        <p class="text-danger">{{$message}}</p> 
+                        @enderror
+                      </div>                          
+
+                  <div class="submit_button_align" style="text-align: right;">
+                    <button type="submit" class="btn btn-success btn-lg">Update</button>
+                  </div>                      
+                </div>
+                
+              </div>
 
   
                 </form>

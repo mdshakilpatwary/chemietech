@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\PageElementController;
 use App\Http\Controllers\Backend\AboutElementController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductCatController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProductSubCatController;
 use App\Http\Controllers\Backend\ExpertisePageController;
 use App\Http\Controllers\Backend\CareerController;
@@ -107,6 +108,7 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/product/manage', 'manage')->name('product.manage');
         Route::get('/product/edit/{id}', 'edit')->name('product.edit');
         Route::get('/product/delete/{id}', 'delete')->name('product.delete');
+        Route::get('/product/status/{id}', 'status')->name('product.status');
     });
 
     //product category route part controller group------- 07
@@ -119,6 +121,7 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/category/delete/{id}', 'delete')->name('category.delete');
         Route::get('/category/status/{id}', 'status')->name('category.status');
     });
+   
     //product Subcategory route part controller group------- 08
     Route::controller(ProductSubCatController::class)->group(function () {
         Route::get('/subcategory', 'index')->name('subcategory');
@@ -190,9 +193,19 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/header/menu', 'create')->name('menu.create');
         Route::post('/header/menu/update/{id}', 'update')->name('menu.update');
         Route::get('/header/menu/status/{id}', 'status')->name('header.menu.status');
-        
- 
 
+    });
+
+     //News route part controller group------- 13
+     Route::controller(NewsController::class)->group(function () {
+        Route::get('/news', 'index')->name('news');
+        Route::post('/news/store', 'store')->name('news.store');
+        Route::post('/news/update/{id}', 'update')->name('news.update');
+        Route::get('/news/manage', 'manage')->name('news.manage');
+        Route::get('/news/edit/{id}', 'edit')->name('news.edit');
+        Route::get('/news/delete/{id}', 'delete')->name('news.delete');
+        Route::get('/news/gimage/delete/{id}', 'gimagedelete')->name('gimage.delete');
+        Route::get('/news/status/{id}', 'status')->name('news.status');
     });
 
 

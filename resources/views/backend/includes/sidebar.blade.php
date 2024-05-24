@@ -193,7 +193,27 @@
         </ul>
       </li>
  
-      
+      <!-- news event part  -->
+      <li class="nav-heading">News Event Elements</li>
+
+      <li class="nav-item ">
+        <a class="nav-link collapsed " data-bs-target="#newsEvent" data-bs-toggle="collapse" href="#" style="background: {{ Route::is('news') || Route::is('news.manage')||Route::is('news.edit')? '#f6f9ff' : '' }} ;">
+          <i class="bi bi-box2-fill"></i><span>news</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="newsEvent" class="nav-content collapse {{ Route::is('news') || Route::is('news.manage')||Route::is('news.edit')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+ 
+          <li>
+            <a href="{{route('news')}}" class="{{ Route::is('news')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add News</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('news.manage')}}" class="{{ Route::is('news.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage News</span>
+            </a>
+          </li>
+        </ul>
+      </li>
     <!-- End Profile Page Nav -->
         <li class="nav-heading">Nave-Item</li>
 

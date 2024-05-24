@@ -47,7 +47,7 @@
                           @error('description')
                           <p class="text-danger">{{$message}}</p>                
                           @enderror
-                      </div>
+                        </div>
                         <div class="submit_button_align" style="text-align: right;">
                           <button type="submit" class="btn btn-success btn-lg">Add</button>
                         </div>                        

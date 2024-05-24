@@ -26,6 +26,7 @@
                   <div class="row mb-3">
                       
                       <div class="offset-md-2 offset-lg-2 col-md-8 col-lg-8 col-12 col-sm-12">
+                        
                         <div class="form-group mb-3">
                             <label class="col-form-label" >Select Category</label>
                             <select name="category" id="" class="form-control">
