@@ -51,14 +51,28 @@
       </li>
 
       <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-3" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('about.story*')? '#f6f9ff' : '' }} ; ">
+        @php
+        $activeSidebar = "Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*') ||Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*') ||Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')" ;
+        @endphp
+
+        <a class="nav-link collapsed " data-bs-target="#components-nav-3" data-bs-toggle="collapse" href="#" style="background:{{ $activeSidebar ? '#f6f9ff' : '' }} ; ">
           <i class="bi bi-postcard"></i><span>About page</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav-3" class="nav-content collapse {{ Route::is('about.story*')? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+        <ul id="components-nav-3" class="nav-content collapse {{ $activeSidebar ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
  
           <li>
-            <a href="{{route('about.story')}}" class="{{ Route::is('about.story')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>About Story</span>
+            <a href="{{route('about.membership.manage')}}" class="{{ Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Membership</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('about.certification.manage')}}" class="{{ Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Our Certification</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('about.principal.manage')}}" class="{{ Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Our Principal</span>
             </a>
           </li>
         </ul>

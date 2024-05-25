@@ -5,7 +5,9 @@ use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\PageBannerController;
 use App\Http\Controllers\Backend\PageElementController;
-use App\Http\Controllers\Backend\AboutElementController;
+use App\Http\Controllers\Backend\AboutMembershipController;
+use App\Http\Controllers\Backend\AboutCertificationController;
+use App\Http\Controllers\Backend\AboutPrincipalController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductCatController;
 use App\Http\Controllers\Backend\NewsController;
@@ -93,13 +95,41 @@ Route::middleware('auth','role:Admin')->group(function () {
     });
 
     //about Element route part controller group------- 05
-    Route::controller(AboutElementController::class)->group(function () {
-        // about story element 
-        Route::get('/about/story/', 'index')->name('about.story');
-        Route::post('/about/story/store', 'store')->name('about.story.store');
-        Route::post('/about/story/update/{id}', 'update')->name('about.story.update');
+    // ##################
+    Route::controller(AboutMembershipController::class)->group(function () {
+        // about membership element 
+        Route::get('/about/membership/', 'index')->name('about.membership');
+        Route::post('/about/membership/store', 'store')->name('about.membership.store');
+        Route::get('/about/membership/manage', 'manage')->name('about.membership.manage');
+        Route::get('/about/membership/edit/{id}', 'edit')->name('about.membership.edit');
+        Route::get('/about/membership/delete/{id}', 'delete')->name('about.membership.delete');
+        Route::post('/about/membership/update/{id}', 'update')->name('about.membership.update');
+        Route::get('/about/membership/status/{id}', 'status')->name('about.membership.status');
+    });
+    // ##################
+    Route::controller(AboutCertificationController::class)->group(function () {
+        // about certification element 
+        Route::get('/about/certification/', 'index')->name('about.certification');
+        Route::post('/about/certification/store', 'store')->name('about.certification.store');
+        Route::get('/about/certification/manage', 'manage')->name('about.certification.manage');
+        Route::get('/about/certification/edit/{id}', 'edit')->name('about.certification.edit');
+        Route::get('/about/certification/delete/{id}', 'delete')->name('about.certification.delete');
+        Route::post('/about/certification/update/{id}', 'update')->name('about.certification.update');
+        Route::get('/about/certification/status/{id}', 'status')->name('about.certification.status');
+    });
+    // ##################
+    Route::controller(AboutPrincipalController::class)->group(function () {
+        // about principal element 
+        Route::get('/about/principal/', 'index')->name('about.principal');
+        Route::post('/about/principal/store', 'store')->name('about.principal.store');
+        Route::get('/about/principal/manage', 'manage')->name('about.principal.manage');
+        Route::get('/about/principal/edit/{id}', 'edit')->name('about.principal.edit');
+        Route::get('/about/principal/delete/{id}', 'delete')->name('about.principal.delete');
+        Route::post('/about/principal/update/{id}', 'update')->name('about.principal.update');
+        Route::get('/about/principal/status/{id}', 'status')->name('about.principal.status');
     });
 
+    // #############################
     //product route part controller group------- 06
     Route::controller(ProductController::class)->group(function () {
         Route::get('/product', 'index')->name('product');

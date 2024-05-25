@@ -65,15 +65,29 @@
                             <p class="text-danger">{{$message}}</p> 
                             @enderror
                           </div>                          
-                          <div class="form-group mb-3">
-                            <label for="inputNumber" class=" col-form-label">Select Group Image <span style="color: #6b6868">(resolution 400x350 )</span></label>
-                            <img src="" alt="" class="g_change_image mb-2" style="width: 150px; height: 100px; display:block;">
-                            <input class="form-control g_file_image" type="file" id="formFile" name="group_image[]" multiple required>
-                            <div class="invalid-feedback">Please input news Group image</div>
-                            @error('group_image')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                          </div>                          
+                          <table class="table" id="elementTable">
+                            <tr class="row_one">
+
+                                <td>
+                                    <div class="form-group">
+                                        <label for="elementImage">Select Multiple Image <span style="color: #6b6868">(resolution 400x350)</span></label>
+                                        <input type="file" name="group_image[]" class="form-control" multiple required>
+                                        <div class="invalid-feedback">Please input your news image</div>
+                                        @error('group_image')
+                                        <p class="text-danger">{{$message}}</p> 
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td class="">
+                                    <div style="display: flex; justify-content: center; align-items: center;   margin-top: 26px;">
+                                        <span class="addElement btn btn-info btn-sm" style="font-size: 16px; padding: 1px 3px; margin: 0 1px;"><i class="addElement bi bi-plus-lg"></i></span>
+                                        <span class="removeElement btn btn-secondary btn-sm" style="font-size: 16px; padding: 1px 3px; margin: 0;"><i class="removeElement bi bi-dash-lg"></i></span>
+                                    </div>
+        
+                                </td>
+                            </tr>
+                        
+                        </table>                          
 
                       <div class="submit_button_align" style="text-align: right;">
                         <button type="submit" class="btn btn-success btn-lg">Add</button>
@@ -96,6 +110,56 @@
 @endsection
 @section('script_link')
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add event listener for "add" buttons
+    document.getElementById('elementTable').addEventListener('click', function(event) {
+        if (event.target.classList.contains('addElement')) {
+            var addButton = event.target;
+
+            var row = addButton.closest('tr');
+            var clone = row.cloneNode(true);
+
+            // Clear input values in the cloned row
+            clone.querySelectorAll('input[type="text"], input[type="hidden"]').forEach(function(input) {
+                input.value = '';
+            });
+
+            // Reset file input value
+            clone.querySelectorAll('input[type="file"]').forEach(function(input) {
+                input.value = null;
+                input.removeAttribute('required'); // Temporarily remove the required attribute
+            });
+
+            // Clear img src attribute in the cloned row
+            clone.querySelectorAll('img').forEach(function(img) {
+                img.src = ''; // or set a default placeholder image
+            });
+
+            // Append the cloned row after the current row
+            row.parentNode.insertBefore(clone, row.nextSibling);
+
+            // Reapply the required attribute to file input after a short delay
+            setTimeout(function() {
+                clone.querySelectorAll('input[type="file"]').forEach(function(input) {
+                    input.setAttribute('required', ''); // Reapply the required attribute
+                });
+            }, 100);
+        }
+    });
+
+    // Add event listener for "remove" buttons (delegated to the parent element)
+    document.getElementById('elementTable').addEventListener('click', function(event) {
+        if (event.target.classList.contains('removeElement')) {
+            var removeButton = event.target;
+            var row = removeButton.closest('tr');
+
+            // Check if the row being removed is not the first row
+            if (row.previousElementSibling) {
+                row.parentNode.removeChild(row);
+            }
+        }
+    });
+});
   //  onchange image file part
 $(document).ready(function(){
 $('.g_file_image').change('.g_change_image',function(){
