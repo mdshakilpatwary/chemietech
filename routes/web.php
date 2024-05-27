@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\PageBannerController;
 use App\Http\Controllers\Backend\PageElementController;
 use App\Http\Controllers\Backend\AboutMembershipController;
 use App\Http\Controllers\Backend\AboutCertificationController;
+use App\Http\Controllers\Backend\AboutManagementController;
+use App\Http\Controllers\Backend\AboutTeamController;
 use App\Http\Controllers\Backend\AboutPrincipalController;
 use App\Http\Controllers\Backend\AboutClientController;
 use App\Http\Controllers\Backend\ProductController;
@@ -117,6 +119,28 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/about/certification/delete/{id}', 'delete')->name('about.certification.delete');
         Route::post('/about/certification/update/{id}', 'update')->name('about.certification.update');
         Route::get('/about/certification/status/{id}', 'status')->name('about.certification.status');
+    });
+    // ##################
+    Route::controller(AboutTeamController::class)->group(function () {
+        // about team element 
+        Route::get('/about/team/', 'index')->name('about.team');
+        Route::post('/about/team/store', 'store')->name('about.team.store');
+        Route::get('/about/team/manage', 'manage')->name('about.team.manage');
+        Route::get('/about/team/edit/{id}', 'edit')->name('about.team.edit');
+        Route::get('/about/team/delete/{id}', 'delete')->name('about.team.delete');
+        Route::post('/about/team/update/{id}', 'update')->name('about.team.update');
+        Route::get('/about/team/status/{id}', 'status')->name('about.team.status');
+    });
+    // ##################
+    Route::controller(AboutManagementController::class)->group(function () {
+        // about management element 
+        Route::get('/about/management/', 'index')->name('about.management');
+        Route::post('/about/management/store', 'store')->name('about.management.store');
+        Route::get('/about/management/manage', 'manage')->name('about.management.manage');
+        Route::get('/about/management/edit/{id}', 'edit')->name('about.management.edit');
+        Route::get('/about/management/delete/{id}', 'delete')->name('about.management.delete');
+        Route::post('/about/management/update/{id}', 'update')->name('about.management.update');
+        Route::get('/about/management/status/{id}', 'status')->name('about.management.status');
     });
     // ##################
     Route::controller(AboutPrincipalController::class)->group(function () {

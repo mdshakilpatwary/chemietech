@@ -30,6 +30,8 @@ class AboutClientController extends Controller
                 $request->validate([
                     'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                     'category' => 'required',
+                    'url' => 'nullable|url',
+
                 ]);
                 $client=new Client;
               
@@ -47,6 +49,7 @@ class AboutClientController extends Controller
                     }
         
                     $client->clientCat_id =$request->category;
+                    $client->url =$request->url;
                     $msg = $client->save();
         
                     if($msg){
@@ -67,6 +70,7 @@ class AboutClientController extends Controller
             $request->validate([
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'category' => 'required',
+                'url' => 'nullable|url',
             ]);
     
     
@@ -89,6 +93,7 @@ class AboutClientController extends Controller
                 }
                 
             $client->clientCat_id =$request->category;
+            $client->url =$request->url;
     
             $msg = $client->update();
     

@@ -34,6 +34,7 @@
                                     <tr>
                                         <th>#Sl</th>
                                         <th>Client Category</th>
+                                        <th>Link</th>
                                         <th>Logo Image</th>
                                         <th>Status</th>
                                         <th>Action</th>
@@ -46,6 +47,13 @@
                                    <tr >
                                        <td>{{$sl++}}</td>
                                        <td>{{$client->clientcat->name}}</td>
+                                       <td>
+                                        @if($client->url == null)
+                                        <span>Empty</span>
+                                        @else
+                                        <a href="{{$client->url}}" target="blank">click</a>
+                                        @endif
+                                        </td>
                                        <td>
                                            <img src="{{asset($client->image)}}" alt="" style="width: 120px; height: 60px;">
                                        </td>

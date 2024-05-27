@@ -56,6 +56,13 @@
                                         <p class="text-danger">{{$message}}</p> 
                                         @enderror
                                       </div> 
+                                      <div class="form-group mb-3">
+                                        <label for="inputNumber" class=" col-form-label">Link</label>
+                                        <input class="form-control" type="text" id="" name="url" value="{{$client->url}}">
+                                        @error('url')
+                                        <p class="text-danger">{{$message}}</p> 
+                                        @enderror
+                                      </div> 
                                         
                                         
                                         

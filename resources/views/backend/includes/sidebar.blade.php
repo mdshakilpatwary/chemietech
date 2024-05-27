@@ -52,7 +52,7 @@
 
       <li class="nav-item ">
         @php
-        $activeSidebar = "Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*') ||Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*') ||Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')||Route::is('about.client*') || Route::is('about.client.manage*') ||Route::is('about.client.edit*')" ;
+        $activeSidebar = "Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*') ||Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*') ||Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')||Route::is('about.client*') || Route::is('about.client.manage*') ||Route::is('about.client.edit*')||Route::is('about.team*') || Route::is('about.team.manage*') ||Route::is('about.team.edit*')||Route::is('about.management*') || Route::is('about.management.manage*') ||Route::is('about.management.edit*')" ;
         @endphp
 
         <a class="nav-link collapsed " data-bs-target="#components-nav-3" data-bs-toggle="collapse" href="#" style="background:{{ $activeSidebar ? '#f6f9ff' : '' }} ; ">
@@ -78,6 +78,16 @@
           <li>
             <a href="{{route('about.client.manage')}}" class="{{ Route::is('about.client*') || Route::is('about.client.manage*') ||Route::is('about.client.edit*')? 'active' : '' }}">
               <i class="bi bi-circle"></i><span>Our Client</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('about.team.manage')}}" class="{{ Route::is('about.team*') || Route::is('about.team.manage*') ||Route::is('about.team.edit*')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Our Teams</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('about.management.manage')}}" class="{{ Route::is('about.management*') || Route::is('about.management.manage*') ||Route::is('about.management.edit*')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Our Management</span>
             </a>
           </li>
         </ul>
