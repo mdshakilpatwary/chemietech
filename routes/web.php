@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\PageElementController;
 use App\Http\Controllers\Backend\AboutMembershipController;
 use App\Http\Controllers\Backend\AboutCertificationController;
 use App\Http\Controllers\Backend\AboutPrincipalController;
+use App\Http\Controllers\Backend\AboutClientController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductCatController;
 use App\Http\Controllers\Backend\NewsController;
@@ -127,6 +128,25 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/about/principal/delete/{id}', 'delete')->name('about.principal.delete');
         Route::post('/about/principal/update/{id}', 'update')->name('about.principal.update');
         Route::get('/about/principal/status/{id}', 'status')->name('about.principal.status');
+    });
+    // ##################
+    Route::controller(AboutClientController::class)->group(function () {
+        // about client element 
+        Route::get('/about/client/', 'index')->name('about.client');
+        Route::post('/about/client/store', 'store')->name('about.client.store');
+        Route::get('/about/client/manage', 'manage')->name('about.client.manage');
+        Route::get('/about/client/edit/{id}', 'edit')->name('about.client.edit');
+        Route::get('/about/client/delete/{id}', 'delete')->name('about.client.delete');
+        Route::post('/about/client/update/{id}', 'update')->name('about.client.update');
+        Route::get('/about/client/status/{id}', 'status')->name('about.client.status');
+
+        // client category 
+        Route::post('/about/clientcategory/store', 'storeCategory')->name('about.clientCategory.store');
+        Route::post('/about/clientcategory/update/{id}', 'updateCategory')->name('about.clientCategory.update');
+        Route::get('/about/clientcategory/manage', 'manageCategory')->name('about.clientCat.manage');
+        Route::get('/about/clientcategory/delete/{id}', 'deleteCategory')->name('about.clientCat.delete');
+        Route::get('/about/clientcategory/status/{id}', 'statusCategory')->name('about.clientCat.status');
+
     });
 
     // #############################
