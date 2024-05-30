@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('email_2')->nullable();
             $table->string('email_3')->nullable();
             $table->string('time')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('linkedin')->nullable();
-            $table->string('map')->nullable();
+            $table->text('facebook')->nullable();
+            $table->text('linkedin')->nullable();
+            $table->text('map')->nullable();
             $table->string('type')->nullable();
             $table->timestamps();
         });

@@ -1,18 +1,25 @@
-
+<!-- 
+- Design By: Binary Byte
+- Description: This file contains code for web design of index file.
+- Author: Binary Byte
+-->
 @include('frontend.includes.head')
 
-<body>
 
-  <div class="loader"></div>
-  <div id="myDiv">
-<!-- main content part  -->
+<body>
+  <!-- Spinner Start -->
+  <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+      <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+  <!-- Spinner End -->
+  @include('frontend.includes.header')
+  <!-- main body -->
 @yield('mainContent')
 
-<!--<div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-12 mt_mobile--30">-->
-<!--  <div class="contact_whatsapps_button">-->
-<!--      <a href="https://wa.me/+8801787180918" target="blank" class="contact_link"><i class="fab fa-whatsapp"></i></a>-->
-<!--  </div>-->
-<!--</div>-->
+
+
 @include('frontend.includes.footer')
 
 
