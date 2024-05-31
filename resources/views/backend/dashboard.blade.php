@@ -1,15 +1,8 @@
 <?php
 use App\Models\Product;
 use App\Models\Career;
-use App\Models\PageElement;
 $products= Product::all();
 $careers= Career::where('status',1)->get();
-$client =array();
-if(PageElement::where('type','=',2)->first()){
-  $clients= PageElement::where('type','=',2)->first();
-  $contentArray =json_decode($clients->content, true); 
-  $client =$contentArray['contentImage'];
-}
 
 $siteInfo =siteInfoData();
 
@@ -66,7 +59,7 @@ $siteInfo =siteInfoData();
 
             <div class="text-center">
               
-                <h6 style="font-size: 35px; font-weight: bold;">{{count($client)}}</h6>
+                <h6 style="font-size: 35px; font-weight: bold;">{{}}</h6>
             
             </div>
           </div>

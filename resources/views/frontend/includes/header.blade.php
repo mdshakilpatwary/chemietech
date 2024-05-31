@@ -1,6 +1,7 @@
 <?php
 $siteInfoData = siteInfoData();
-use App\Models\MenuName;
+use App\Models\ProductCategory;
+$productCats =ProductCategory::where('status',1)->orderBy('id','desc')->get();
 ?>
   <div class="container-fluid bg-light p-0">
     <div class="row gx-0 d-none d-lg-flex">
@@ -32,23 +33,26 @@ use App\Models\MenuName;
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
     <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <!-- <h2 class="m-0 text-primary">WooDY</h2> -->
-        <img src="{{asset('frontend/')}}img/logo/CHEMIE TECH 02.png" alt="" style="height: inherit;">
+      @if($siteInfoData->logo != null)
+      <img src="{{asset('uploads/siteinfo/'.$siteInfoData->logo)}}" alt="" style="height: inherit;">
+      @else
+     <h2 class="m-0 text-primary">{{$siteInfoData->name}}</h2>
+       @endif
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a href="{{route('homepage')}}" class="nav-item nav-link {{ Route::is('homepage*')? 'active' : '' }}">Home</a>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About Us</a>
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('about.membership.page*')||Route::is('about.certification.page*')||Route::is('about.principal.page*')||Route::is('about.client.page*')? 'active' : '' }}" data-bs-toggle="dropdown">About Us</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="associationmembership.html" class="dropdown-item">Association & Membership</a>
-                    <a href="certification.html" class="dropdown-item">Certification</a>
+                    <a href="{{route('about.membership.page')}}" class="dropdown-item {{ Route::is('about.membership.page*')? 'active' : '' }}">Association & Membership</a>
+                    <a href="{{route('about.certification.page')}}" class="dropdown-item {{ Route::is('about.certification.page*')? 'active' : '' }}">Certification</a>
                     <!-- <a href="team.html" class="dropdown-item">Our Team</a> -->
-                    <a href="principal.html" class="dropdown-item">Our Principal</a>
-                    <a href="client.html" class="dropdown-item">Our Client</a>
+                    <a href="{{route('about.principal.page')}}" class="dropdown-item {{ Route::is('about.principal.page*')? 'active' : '' }}">Our Principal</a>
+                    <a href="{{route('about.client.page')}}" class="dropdown-item {{ Route::is('about.client.page*')? 'active' : '' }}">Our Client</a>
                     <!-- <a href="management.html" class="dropdown-item">Our Management</a> -->
                 </div>
             </div>
@@ -61,15 +65,13 @@ use App\Models\MenuName;
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Our Products</a>
+                <a href="#" class="nav-link dropdown-toggle {{ Route::is('product.page*')? 'active' : '' }}" data-bs-toggle="dropdown">Our Products</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="ceramic.html" class="dropdown-item">Ceramic</a>
-                    <a href="glass.html" class="dropdown-item">Glass</a>
-                    <a href="#" class="dropdown-item">Metallurgy & Steel</a>
-                    <a href="paintadhesive.html" class="dropdown-item">Paint & Adhesive</a>
-                    <a href="leatherfootwearrubber.html" class="dropdown-item">Leather, Footwear & Rubber</a>
-                    <a href="#" class="dropdown-item">Pulp, Paper & Tissue</a>
-                    <a href="#" class="dropdown-item">Screen Printing</a>
+                    @if(count($productCats) > 0)
+                    @foreach($productCats as $productCat)
+                        <a href="{{route('product.page',$productCat->id)}}" class="dropdown-item {{ request()->is('/category-wise/product/'.$productCat->id) == true ? '' : 'active' }}">{{$productCat->name}}</a>
+                    @endforeach
+                    @endif
                 </div>
             </div>
             <a href="newsevents.html" class="nav-item nav-link">News & Events</a>

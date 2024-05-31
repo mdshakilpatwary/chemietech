@@ -4,7 +4,6 @@
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\PageBannerController;
-use App\Http\Controllers\Backend\PageElementController;
 use App\Http\Controllers\Backend\AboutMembershipController;
 use App\Http\Controllers\Backend\AboutCertificationController;
 use App\Http\Controllers\Backend\AboutManagementController;
@@ -15,10 +14,8 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductCatController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProductSubCatController;
-use App\Http\Controllers\Backend\ExpertisePageController;
 use App\Http\Controllers\Backend\CareerController;
-use App\Http\Controllers\Backend\CsrPageController;
-use App\Http\Controllers\Backend\MenuController;
+// use App\Http\Controllers\Backend\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,21 +78,7 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/header/info/delete/{id}', 'delete')->name('header.info.delete');
 
     });
-    //Page Element route part controller group------- 04
-    Route::controller(PageElementController::class)->group(function () {
-        // home industrial element 
-        Route::get('/home/industrial/element', 'index')->name('home.industrial.element');
-        Route::post('/home/industrial/element/store', 'store')->name('home.industrial.store');
-        Route::post('/home/industrial/element/update/{id}', 'update')->name('home.industrial.update');
-       
-        // home client element 
 
-        Route::get('/home/client/element', 'client')->name('home.client.element');
-        Route::post('/home/client/element/store', 'clientStore')->name('home.client.element.store');
-        Route::post('/home/client/element/update/{id}', 'clientUpdate')->name('home.client.element.update');
-
-
-    });
 
     //about Element route part controller group------- 05
     // ##################
@@ -223,52 +206,15 @@ Route::middleware('auth','role:Admin')->group(function () {
 
     });
 
-    //Expertise page route part controller group------- 10
-    Route::controller(ExpertisePageController::class)->group(function () {
-        // career part 
-        Route::get('/expertise/element', 'index')->name('expertise.element');
-        Route::post('/expertise/element/store', 'store')->name('expertise.element.store');
-        Route::get('/expertise/element/manage', 'manage')->name('expertise.element.manage');
-        Route::post('/expertise/element/update/{id}', 'update')->name('expertise.element.update');
-        Route::get('/expertise/element/edit/{id}', 'edit')->name('expertise.element.edit');
-        Route::get('/expertise/element/delete/{id}', 'delete')->name('expertise.element.delete');
-        Route::get('/expertise/element/status/{id}', 'status')->name('expertise.element.status');
-
-    });
-    //Csr page route part controller group------- 11
-    Route::controller(CsrPageController::class)->group(function () {
-        // casr common part 
-        Route::get('/csr/common', 'csrCommon')->name('csr.common');
-        Route::post('/csr/common/store', 'csrCommonStore')->name('csr.common.store');
-        Route::post('/csr/common/update/{id}', 'csrCommonUpdate')->name('csr.common.update');
-        
-        // csr raw meterial part
-
-        Route::get('/csr/raw_maretial', 'csrRaw')->name('csr.raw_material');
-        Route::post('/csr/raw_maretial/store', 'csrRawStore')->name('csr.raw_material.store');
-        Route::post('/csr/raw_maretial/update/{id}', 'csrRawUpdate')->name('csr.raw_material.update');
-        // csr pre-production part
-
-        Route::get('/csr/pre_production', 'csrPreProduction')->name('csr.pre_production');
-        Route::post('/csr/pre_production/store', 'csrPreProductionStore')->name('csr.pre_production.store');
-        Route::post('/csr/pre_production/update/{id}', 'csrPreProductionUpdate')->name('csr.pre_production.update');
-        // csr production part
-
-        Route::get('/csr/production', 'csrProduction')->name('csr.production');
-        Route::post('/csr/production/store', 'csrProductionStore')->name('csr.production.store');
-        Route::post('/csr/production/update/{id}', 'csrProductionUpdate')->name('csr.production.update');
-
-
-    });
     
         //menubar route part controller group------- 12
-    Route::controller(MenuController::class)->group(function () {
-        // manu part 
-        Route::get('/header/menu', 'create')->name('menu.create');
-        Route::post('/header/menu/update/{id}', 'update')->name('menu.update');
-        Route::get('/header/menu/status/{id}', 'status')->name('header.menu.status');
+    // Route::controller(MenuController::class)->group(function () {
+    //     // manu part 
+    //     Route::get('/header/menu', 'create')->name('menu.create');
+    //     Route::post('/header/menu/update/{id}', 'update')->name('menu.update');
+    //     Route::get('/header/menu/status/{id}', 'status')->name('header.menu.status');
 
-    });
+    // });
 
      //News route part controller group------- 13
      Route::controller(NewsController::class)->group(function () {

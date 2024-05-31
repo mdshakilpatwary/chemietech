@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('sub_title')->nullable();
             $table->string('image');
-            $table->string('url')->nullable();
+            $table->text('url')->nullable();
             $table->integer('type')->comment('type =1(membership), type =2(certification),type =3(principal)');
             $table->integer('status')->default(1);
             $table->timestamps();

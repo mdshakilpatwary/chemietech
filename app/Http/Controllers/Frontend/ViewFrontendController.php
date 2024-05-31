@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\CommonHeaderBanner;
 use App\Models\Product;
-use App\Models\ProductImage;
+use App\Models\ProductSubCat;
+use App\Models\ClientCategory;
+use App\Models\ProductCategory;
 use App\Models\Career;
-use App\Models\ProductSpecification;
-use App\Models\ExpertisePageElement;
+use App\Models\AboutPageElement;
 use App\Models\careerCommonInfo;
 use Illuminate\Http\Request;
 
@@ -18,26 +19,31 @@ class ViewFrontendController extends Controller
         $products = Product::orderBy('id','desc')->get();
         return view('frontend.index', compact('products'));
     }
-    public function aboutpage(){
-        return view('frontend.page.about');
+    public function aboutMembership(){
+        $memberships =AboutPageElement::where('status',1)->where('type',1)->orderBy('id','desc')->get();
+        return view('frontend.page.aboutmembership', compact('memberships'));
     }
-    public function productSinglePage($name){
-        $product = Product::where('p_name','=', $name)->first();
-        $images ='';
-        $spacifics ='';
-        if($product){
-            $images = ProductImage::where('product_id','=',$product->id)->get();
-            $spacifics = ProductSpecification::where('product_id','=',$product->id)->get();
-        }
+    public function aboutPrincipal(){
+        $principals =AboutPageElement::where('status',1)->where('type',3)->orderBy('id','desc')->get();
+        return view('frontend.page.aboutprincipal', compact('principals'));
+    }
+    public function aboutClient(){
+        $clientcats =ClientCategory::where('status',1)->orderBy('id','desc')->get();
+        return view('frontend.page.aboutclient', compact('clientcats'));
+    }
+    public function aboutCertification(){
+        $certifications =AboutPageElement::where('status',1)->where('type',2)->orderBy('id','desc')->get();
 
-        return view('frontend.page.productSinglePage',compact('product','images','spacifics'));
+        return view('frontend.page.aboutcertification', compact('certifications'));
     }
+
     // product page 
-    public function productPage(){
-        $products = Product::orderBy('id','desc')->get();
-
-        return view('frontend.page.allProduct',compact('products'));
+    public function productPage($id){
+        $subcats = ProductSubCat::where('cat_id', $id)->where('status',1)->orderBy('id','desc')->get();
+        $category =ProductCategory::findOrFail($id);
+        return view('frontend.page.product',compact('subcats','category'));
     }
+
     // career page 
     public function careerPage(){
         $careers = Career::where('status','=',1)->orderBy('id','desc')->get();

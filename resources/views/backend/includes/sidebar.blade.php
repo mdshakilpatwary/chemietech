@@ -31,28 +31,11 @@
         </ul>
       </li>
 
-      <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-2" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('home.industrial.element*') || Route::is('home.client.element*')? '#f6f9ff' : '' }} ; ">
-          <i class="bi bi-house-add"></i><span>Home page</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav-2" class="nav-content collapse {{ Route::is('home.industrial.element*') || Route::is('home.client.element*')? 'show' : '' }}  " data-bs-parent="#sidebar-nav">
- 
-          <li>
-            <a href="{{route('home.industrial.element')}}" class="{{ Route::is('home.industrial.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Industrial Element</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('home.client.element')}}" class="{{ Route::is('home.client.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Client Element</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+
 
       <li class="nav-item ">
         @php
-        $activeSidebar = "Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*') ||Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*') ||Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')||Route::is('about.client*') || Route::is('about.client.manage*') ||Route::is('about.client.edit*')||Route::is('about.team*') || Route::is('about.team.manage*') ||Route::is('about.team.edit*')||Route::is('about.management*') || Route::is('about.management.manage*') ||Route::is('about.management.edit*')" ;
+        $activeSidebar = Route::is('about.membership*') || Route::is('about.membership.manage*') ||Route::is('about.membership.edit*') ||Route::is('about.certification*') || Route::is('about.certification.manage*') ||Route::is('about.certification.edit*') ||Route::is('about.principal*') || Route::is('about.principal.manage*') ||Route::is('about.principal.edit*')||Route::is('about.client*') || Route::is('about.client.manage*') ||Route::is('about.client.edit*')||Route::is('about.team*') || Route::is('about.team.manage*') ||Route::is('about.team.edit*')||Route::is('about.management*') || Route::is('about.management.manage*') ||Route::is('about.management.edit*') ;
         @endphp
 
         <a class="nav-link collapsed " data-bs-target="#components-nav-3" data-bs-toggle="collapse" href="#" style="background:{{ $activeSidebar ? '#f6f9ff' : '' }} ; ">
@@ -115,53 +98,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-9" data-bs-toggle="collapse" href="#" style="background:{{  Route::is('expertise.element*') || Route::is('expertise.element.manage*') ||Route::is('expertise.element.edit*')? '#f6f9ff' : '' }} ; ">
-          <i class="bi bi-bounding-box"></i><span>Expertise page</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav-9" class="nav-content collapse {{ Route::is('expertise.element*') || Route::is('expertise.element.manage*') ||Route::is('expertise.element.edit*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
- 
-          <li>
-            <a href="{{route('expertise.element')}}" class="{{ Route::is('expertise.element')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Expertise Add</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('expertise.element.manage')}}"  class="{{ Route::is('expertise.element.manage')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Expertise Manage</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-10" data-bs-toggle="collapse" href="#" style="background:{{  Route::is('csr.common*') || Route::is('csr.raw_material*') ||Route::is('csr.pre_production*')||Route::is('csr.production*')? '#f6f9ff' : '' }} ; ">
-          <i class="bi bi-card-heading"></i><span>Csr page</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav-10" class="nav-content collapse {{ Route::is('csr.common*') || Route::is('csr.pre_production*') ||Route::is('csr.raw_material*')||Route::is('csr.production*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
- 
-          <li>
-            <a href="{{route('csr.common')}}" class="{{ Route::is('csr.common')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Csr Common Element</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('csr.raw_material')}}" class="{{ Route::is('csr.raw_material')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Csr Raw Material</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('csr.pre_production')}}" class="{{ Route::is('csr.pre_production')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Csr Pre-Production</span>
-            </a>
-          </li>
-          <li>
-            <a href="{{route('csr.production')}}" class="{{ Route::is('csr.production')? 'active' : '' }}">
-              <i class="bi bi-circle"></i><span>Csr Production</span>
-            </a>
-          </li>
-          
-        </ul>
-      </li>
+    
       <!-- End Components Nav -->
 
 
@@ -244,14 +181,14 @@
         </ul>
       </li>
     <!-- End Profile Page Nav -->
-        <li class="nav-heading">Nave-Item</li>
+        {{-- <li class="nav-heading">Nave-Item</li> --}}
 
-      <li class="nav-item" style="background:{{ Route::is('menu.create')? '#f6f9ff' : ' none !important' }} ; ">
+      {{-- <li class="nav-item" style="background:{{ Route::is('menu.create')? '#f6f9ff' : ' none !important' }} ; ">
         <a class="nav-link {{ Route::is('menu.create')? 'active' : '' }}" href="{{route('menu.create')}}" style="color:{{ Route::is('menu.create')? '' : 'inherit' }} ;">
           <i class="bi bi-segmented-nav"></i>
           <span>Menu-Bar</span>
         </a>
-      </li>
+      </li> --}}
       
     </ul>
 

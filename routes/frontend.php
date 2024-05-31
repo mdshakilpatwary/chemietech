@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ViewFrontendController::class)->group(function () {
     Route::get('/', 'homepage')->name('homepage');
-    Route::get('/about', 'aboutpage')->name('about.page');
-    Route::get('/product/{id}', 'productSinglePage')->name('product.single');
-    Route::get('/our/product', 'productPage')->name('our.product');
+    Route::get('/about/association & membership', 'aboutMembership')->name('about.membership.page');
+    Route::get('/about/certifications', 'aboutCertification')->name('about.certification.page');
+    Route::get('/about/our principal', 'aboutPrincipal')->name('about.principal.page');
+    Route::get('/about/our client', 'aboutClient')->name('about.client.page');
+    Route::get('/category-wise/product/{id}', 'productPage')->name('product.page');
     Route::get('/career/info', 'careerPage')->name('career.page');
     Route::get('/our/expertise', 'expertisePage')->name('expertise');
     Route::get('/csr', 'csrPage')->name('csr');

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('clientCat_id'); 
             $table->foreign('clientCat_id')->references('id')->on('client_categories')->onDelete('cascade');
             $table->string('image');
-            $table->string('url')->nullable();
+            $table->text('url')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });
