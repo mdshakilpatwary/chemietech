@@ -20,15 +20,18 @@ $pageTitle =$category->name;
 @if(count($subcats) > 0)
 @foreach($subcats as $subcat)
     <!-- Product(ceramic) Start -->
+    @php
+    $products = Product::where('cat_id', $category->id)->where('subcat_id',$subcat->id)->where('status',1)->orderBy('id','desc')->get();
+    @endphp
     <div class="container-xxl py-5">
         <div class="container">
             <div class="section-title text-center">
+                @if(count($products) > 0)
                 <h1 class="display-5 mb-5">{{$subcat->name}}</h1>
+                @endif
             </div>
             <div class="row g-4">
-                @php
-                $products = Product::where('cat_id', $category->id)->where('subcat_id',$subcat->id)->where('status',1)->orderBy('id','desc')->get();
-                @endphp
+                
                 @if(count($products) > 0)
                 @foreach($products as $product)
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
@@ -44,8 +47,6 @@ $pageTitle =$category->name;
                         </div>
                     </div>
                 @endforeach
-                @else
-                <h5 class="alert alert-info text-center">Data Did Not Uploaded</h5>
                 @endif
                 
             </div>
@@ -54,7 +55,7 @@ $pageTitle =$category->name;
     <!-- Product(ceramic) End -->
 @endforeach
 @else
-<h5 class="alert alert-info text-center">Data Did Not Uploaded</h5>
+<h5 class="alert text-center">No Product Found</h5>
 @endif
  
 

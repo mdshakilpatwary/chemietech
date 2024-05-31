@@ -11,6 +11,7 @@ use App\Models\ProductCategory;
 use App\Models\Career;
 use App\Models\AboutPageElement;
 use App\Models\careerCommonInfo;
+use App\Models\NewsEvent;
 use Illuminate\Http\Request;
 
 class ViewFrontendController extends Controller
@@ -36,6 +37,16 @@ class ViewFrontendController extends Controller
 
         return view('frontend.page.aboutcertification', compact('certifications'));
     }
+    public function newsPage(){
+        $newsevents =NewsEvent::where('status',1)->orderBy('id','desc')->paginate(9);
+
+        return view('frontend.page.newsevent', compact('newsevents'));
+    }
+    public function singleNewsPage($slug){
+        $newsevent =NewsEvent::where('slug',$slug)->where('status',1)->first();
+
+        return view('frontend.page.singlenewsevent', compact('newsevent'));
+    }
 
     // product page 
     public function productPage($id){
@@ -51,22 +62,10 @@ class ViewFrontendController extends Controller
 
         return view('frontend.page.career',compact('careers','careercommon'));
     }
-    // expertise page 
-    public function expertisePage(){
-        $expertises = ExpertisePageElement::where('status','=',1)->get();
 
-        return view('frontend.page.expertise',compact('expertises'));
-
-    }
-    // csr page 
-    public function csrPage(){
-        return view('frontend.page.csr');
-
-    }
-    // ccontactsr page 
+    // contact page 
     public function contactPage(){
         return view('frontend.page.contact');
-
     }
 
 }

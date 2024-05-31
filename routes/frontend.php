@@ -19,10 +19,12 @@ Route::controller(ViewFrontendController::class)->group(function () {
     Route::get('/about/our principal', 'aboutPrincipal')->name('about.principal.page');
     Route::get('/about/our client', 'aboutClient')->name('about.client.page');
     Route::get('/category-wise/product/{id}', 'productPage')->name('product.page');
+    Route::get('/news & events', 'newsPage')->name('news.page');
+    Route::get('/news & event/{slug}', 'singleNewsPage')->name('single.news.page');
     Route::get('/career/info', 'careerPage')->name('career.page');
     Route::get('/our/expertise', 'expertisePage')->name('expertise');
     Route::get('/csr', 'csrPage')->name('csr');
-    Route::get('/contact', 'contactPage')->name('contact');
+    Route::get('/contact', 'contactPage')->name('contact.page');
 
 });
 
