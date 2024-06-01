@@ -57,11 +57,11 @@ $productCats =ProductCategory::where('status',1)->orderBy('id','desc')->get();
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Business Area</a>
+                <a href="#" class="nav-link dropdown-toggle {{Route::is('businessArea1.page*') ||Route::is('businessArea2.page*')||Route::is('businessArea3.page*')? 'active':''}}" data-bs-toggle="dropdown">Business Area</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="representationofforeignpartner.html" class="dropdown-item">Representation of Foreign Partner</a>
-                    <a href="importforlocalstockofsupply.html" class="dropdown-item">Import for Local Stock and Supply</a>
-                    <a href="technicalsolutionofconsultancy.html" class="dropdown-item">Technical Solution and Consultancy</a>
+                    <a href="{{route('businessArea1.page')}}" class="dropdown-item {{Route::is('businessArea1.page*')? 'active':''}}">Representation of Foreign Partner</a>
+                    <a href="{{route('businessArea2.page')}}" class="dropdown-item {{Route::is('businessArea2.page*')? 'active':''}}">Import for Local Stock and Supply</a>
+                    <a href="{{route('businessArea3.page')}}" class="dropdown-item {{Route::is('businessArea3.page*')? 'active':''}}">Technical Solution and Consultancy</a>
                 </div>
             </div>
             <div class="nav-item dropdown">

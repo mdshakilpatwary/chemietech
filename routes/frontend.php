@@ -25,6 +25,9 @@ Route::controller(ViewFrontendController::class)->group(function () {
     Route::get('/our/expertise', 'expertisePage')->name('expertise');
     Route::get('/csr', 'csrPage')->name('csr');
     Route::get('/contact', 'contactPage')->name('contact.page');
+    Route::get('/Representation of Foreign Partner', 'businessArea1')->name('businessArea1.page');
+    Route::get('/import for local stock of supply', 'businessArea2')->name('businessArea2.page');
+    Route::get('/technical solution of consultancy', 'businessArea3')->name('businessArea3.page');
 
 });
 

@@ -76,6 +76,25 @@
         </ul>
       </li>
       <li class="nav-item ">
+        <a class="nav-link collapsed " data-bs-target="#components-nav-8" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.common*') ||Route::is('businessArea.edit*')? '#f6f9ff' : '' }} ; ">
+          <i class="bi bi-wallet-fill"></i><span>Business Area page</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav-8" class="nav-content collapse {{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.edit*')||Route::is('businessArea.common*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+ 
+          <li>
+            <a href="{{route('businessArea')}}" class="{{ Route::is('businessArea')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add Business Area</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('businessArea.manage')}}"  class="{{ Route::is('businessArea.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage Business Area</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
+      <li class="nav-item ">
         <a class="nav-link collapsed " data-bs-target="#components-nav-8" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('career*') || Route::is('career.manage*') ||Route::is('career.common*') ||Route::is('career.edit*')? '#f6f9ff' : '' }} ; ">
           <i class="bi bi-wallet-fill"></i><span>Career page</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\ProductCatController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProductSubCatController;
 use App\Http\Controllers\Backend\CareerController;
+use App\Http\Controllers\Backend\BusinessAreaController;
 // use App\Http\Controllers\Backend\MenuController;
 use Illuminate\Support\Facades\Route;
 
@@ -188,6 +189,16 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/subcategory/edit/{id}', 'edit')->name('subcategory.edit');
         Route::get('/subcategory/delete/{id}', 'delete')->name('subcategory.delete');
         Route::get('/subcategory/status/{id}', 'status')->name('subcategory.status');
+    });
+    //product Subcategory route part controller group------- 08
+    Route::controller(BusinessAreaController::class)->group(function () {
+        Route::get('/businessArea', 'index')->name('businessArea');
+        Route::post('/businessArea/store', 'store')->name('businessArea.store');
+        Route::post('/businessArea/update/{id}', 'update')->name('businessArea.update');
+        Route::get('/businessArea/manage', 'manage')->name('businessArea.manage');
+        Route::get('/businessArea/edit/{id}', 'edit')->name('businessArea.edit');
+        Route::get('/businessArea/delete/{id}', 'delete')->name('businessArea.delete');
+        Route::get('/businessArea/status/{id}', 'status')->name('businessArea.status');
     });
     //Career route part controller group------- 09
     Route::controller(CareerController::class)->group(function () {

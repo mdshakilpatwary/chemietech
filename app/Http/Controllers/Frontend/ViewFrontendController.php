@@ -12,6 +12,7 @@ use App\Models\Career;
 use App\Models\AboutPageElement;
 use App\Models\careerCommonInfo;
 use App\Models\NewsEvent;
+use App\Models\BusinessArea;
 use Illuminate\Http\Request;
 
 class ViewFrontendController extends Controller
@@ -63,6 +64,21 @@ class ViewFrontendController extends Controller
         return view('frontend.page.career',compact('careers','careercommon'));
     }
 
+    // Business Area page 01 
+    public function businessArea1(){
+        $businessArea = BusinessArea::where('type',1)->where('status',1)->orderBy('id','desc')->get();
+        return view('frontend.page.businessArea1',compact('businessArea'));
+    }
+    // Business Area page 02
+    public function businessArea2(){
+        $businessArea = BusinessArea::where('type',2)->where('status',1)->orderBy('id','desc')->get();
+        return view('frontend.page.businessArea2',compact('businessArea'));
+    }
+    // Business Area page 03
+    public function businessArea3(){
+        $businessArea = BusinessArea::where('type',3)->where('status',1)->orderBy('id','desc')->get();
+        return view('frontend.page.businessArea3',compact('businessArea'));
+    }
     // contact page 
     public function contactPage(){
         return view('frontend.page.contact');
