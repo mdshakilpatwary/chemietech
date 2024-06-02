@@ -13,13 +13,18 @@ use App\Models\AboutPageElement;
 use App\Models\careerCommonInfo;
 use App\Models\NewsEvent;
 use App\Models\BusinessArea;
+use App\Models\Testimonial;
+use App\Models\BannerSlider;
 use Illuminate\Http\Request;
 
 class ViewFrontendController extends Controller
 {
     public function homepage(){
-        $products = Product::orderBy('id','desc')->get();
-        return view('frontend.index', compact('products'));
+        $productCategories = ProductCategory::where('status',1)->orderBy('id','desc')->get();
+        $newsevents = NewsEvent::where('status',1)->orderBy('id','desc')->take(3)->get();
+        $testimonials = Testimonial::where('status',1)->orderBy('id','desc')->get();
+        $bannerSliders = BannerSlider::where('status',1)->orderBy('id','desc')->get();
+        return view('frontend.index', compact('productCategories','testimonials','newsevents','bannerSliders'));
     }
     public function aboutMembership(){
         $memberships =AboutPageElement::where('status',1)->where('type',1)->orderBy('id','desc')->get();

@@ -20,20 +20,21 @@ $siteInfoData = siteInfoData();
               </div>
               <div class="col-lg-3 col-md-6">
                   <h4 class=" mb-4">About Chemie Tech</h4><hr>
-                  <a class="btn btn-link text-dark" href="associationmembership.html">Association & Membership</a>
-                  <a class="btn btn-link text-dark" href="certification.html">Certification</a>
-                  <a class="btn btn-link text-dark" href="team.html">Our Team</a>
-                  <a class="btn btn-link text-dark" href="client.html">Our Client</a>
-                  <a class="btn btn-link text-dark" href="principal.html">Our Principal</a>
-                  <a class="btn btn-link text-dark" href="management.html">Our Management</a>
+                  <a class="btn btn-link text-dark" href="{{route('about.membership.page')}}l">Association & Membership</a>
+                  <a class="btn btn-link text-dark" href="{{route('about.certification.page')}}">Certification</a>
+                  {{-- <a class="btn btn-link text-dark" href="team.html">Our Team</a> --}}
+                  <a class="btn btn-link text-dark" href="{{route('about.client.page')}}">Our Client</a>
+                  <a class="btn btn-link text-dark" href="{{route('about.principal.page')}}">Our Principal</a>
+                  {{-- <a class="btn btn-link text-dark" href="management.html">Our Management</a> --}}
               </div>
               <div class="col-lg-2 col-md-6">
                   <h4 class=" mb-4">Quick Links</h4><hr>
-                  <a class="btn btn-link text-dark" href="">About Us</a>
-                  <a class="btn btn-link text-dark" href="contact.html">Contact Us</a>
-                  <a class="btn btn-link text-dark" href="">Our Products</a>
-                  <a class="btn btn-link text-dark" href="">Terms & Condition</a>
-                  <a class="btn btn-link text-dark" href="">Privacy Policy</a>
+                  <a class="btn btn-link text-dark" href="{{route('news.page')}}">News Event</a>
+                  <a class="btn btn-link text-dark" href="{{route('contact.page')}}">Contact Us</a>
+                  <a class="btn btn-link text-dark" href="{{route('career.page')}}">Career</a>
+                  {{-- <a class="btn btn-link text-dark" href="">Our Products</a> --}}
+                  <a class="btn btn-link text-dark" href="#">Terms & Condition</a>
+                  <a class="btn btn-link text-dark" href="#">Privacy Policy</a>
               </div>
               <div class="col-lg-3 col-md-6">
                   <h4 class="mb-4">Newsletter</h4><hr>

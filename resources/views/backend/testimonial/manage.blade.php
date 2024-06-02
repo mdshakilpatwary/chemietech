@@ -1,11 +1,11 @@
 @extends('backend.master')
 @section('main_body_content_part')
 <div class="pagetitle">
-    <h1>Business Area Manage</h1>
+    <h1>Testimonial Manage</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item ">Business Area</li>
+        <li class="breadcrumb-item ">Testimonial</li>
         <li class="breadcrumb-item active">Manage</li>
       </ol>
     </nav>
@@ -18,8 +18,8 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">All Business Area Page Information </h5>
-                <a href="{{route('businessArea')}}" class="btn btn-sm btn-success">Add</a>
+                <h5 class="card-title">All Testimonial</h5>
+                <a href="{{route('testimonial')}}" class="btn btn-sm btn-success">Add</a>
   
                 <!-- Table with stripped rows -->
                     
@@ -32,48 +32,43 @@
                                 <thead>
                                     <tr>
                                         <th>#Sl</th>
-                                        <th>Page Name</th>
+                                        <th>Name</th>
                                         <th>Title</th>
                                         <th>Description</th>
+                                        <th>Image</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @if(count($businessAreas)>0)
-                                   @foreach($businessAreas as $businessArea)
+                                   @if(count($testimonials)>0)
+                                   @foreach($testimonials as $testimonial)
         
                                    <tr >
                                        <td>{{$sl++}}</td>
-                                       <td> 
-                                        @if($businessArea->type == 1) 
-                                        <span>Foreign Partner</span>
-                                        @elseif($businessArea->type == 2)
-                                        <span>Stock of Supply</span>
+                                       <td>{{$testimonial->name}}</td>
+                                       <td>{{$testimonial->title}}</td>
+                                       <td>{{Str::words($testimonial->description,5,'....')}}</td>
                                        
-                                        @elseif($businessArea->type == 3) 
-                                        <span>Solution of Consultancy</span?>
-
-                                        @endif                                     
+                                       <td>
+                                           <img src="{{asset($testimonial->image)}}" alt=""  style="width: 120px; height: 60px;">
                                        </td>
-                                       <td>{{Str::words($businessArea->title,4 ,'....')}}</td>
-                                       <td>{!!Str::words($businessArea->description,8 ,'...')!!}</td>
                                        <td >
-                                        @if($businessArea->status == 1)
-                                        <a href="{{route('businessArea.status',$businessArea->id)}}" class="btn btn-sm btn-outline-success">Active</a>
+                                        @if($testimonial->status == 1)
+                                        <a href="{{route('testimonial.status',$testimonial->id)}}" class="btn btn-sm btn-outline-success">Active</a>
                                         @else
-                                        <a href="{{route('businessArea.status',$businessArea->id)}}" class="btn btn-sm btn-outline-warning">Inactive</a>
+                                        <a href="{{route('testimonial.status',$testimonial->id)}}" class="btn btn-sm btn-outline-warning">Inactive</a>
                                         @endif
                                        </td>
                                        <td >
-                                           <a href="{{route('businessArea.delete',$businessArea->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
-                                           <a href="{{route('businessArea.edit',$businessArea->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
+                                           <a href="{{route('testimonial.edit',$testimonial->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                                           <a href="{{route('testimonial.delete',$testimonial->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
                                        </td>
                                    </tr>
                                @endforeach
                                @else
                                    <tr>
-                                    <td colspan="9" class="text-center"> No Business Area data added here</td>
+                                    <td colspan="9" class="text-center"> No Testimonial added here</td>
                                    </tr>
                                @endif
         

@@ -1,6 +1,7 @@
 <?php
 $siteInfoData = siteInfoData();
 use App\Models\CommonHeaderBanner;
+use App\Models\HomePageElement;
 $pageTitle ='Contact';
 
 ?>
@@ -140,10 +141,15 @@ $pageTitle ='Contact';
         <div class="row g-0 mx-lg-0">
             <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
                 <div class="p-lg-5 ps-lg-0">
+                    @if(HomePageElement::where('type',3)->first())
+                    @php
+                    $contact = HomePageElement::where('type',3)->first();
+                    @endphp
                     <div class="section-title text-start">
-                        <h1 class="display-5 mb-4">Let's connect!</h1>
+                        <h1 class="display-5 mb-4">{{$contact->title}}</h1>
                     </div>
-                    <p class="mb-4">We value your input and are here to address any questions or concerns you may have. Whether you're interested in our services, have feedback to share, or simply want to say hello, we're eager to hear from you.</p>
+                    <p class="mb-4">{{$contact->description}}</p>
+                    @endif
                     <form>
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">

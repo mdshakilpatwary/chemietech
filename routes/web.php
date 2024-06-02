@@ -16,6 +16,9 @@ use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\ProductSubCatController;
 use App\Http\Controllers\Backend\CareerController;
 use App\Http\Controllers\Backend\BusinessAreaController;
+use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\HomeElementcontroller;
+use App\Http\Controllers\Backend\BannerSliderController;
 // use App\Http\Controllers\Backend\MenuController;
 use Illuminate\Support\Facades\Route;
 
@@ -190,7 +193,7 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/subcategory/delete/{id}', 'delete')->name('subcategory.delete');
         Route::get('/subcategory/status/{id}', 'status')->name('subcategory.status');
     });
-    //product Subcategory route part controller group------- 08
+    // business route part controller group------- 08
     Route::controller(BusinessAreaController::class)->group(function () {
         Route::get('/businessArea', 'index')->name('businessArea');
         Route::post('/businessArea/store', 'store')->name('businessArea.store');
@@ -199,6 +202,27 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/businessArea/edit/{id}', 'edit')->name('businessArea.edit');
         Route::get('/businessArea/delete/{id}', 'delete')->name('businessArea.delete');
         Route::get('/businessArea/status/{id}', 'status')->name('businessArea.status');
+    });
+
+    // Testimonial route part controller group------- 
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('/testimonial', 'index')->name('testimonial');
+        Route::post('/testimonial/store', 'store')->name('testimonial.store');
+        Route::post('/testimonial/update/{id}', 'update')->name('testimonial.update');
+        Route::get('/testimonial/manage', 'manage')->name('testimonial.manage');
+        Route::get('/testimonial/edit/{id}', 'edit')->name('testimonial.edit');
+        Route::get('/testimonial/delete/{id}', 'delete')->name('testimonial.delete');
+        Route::get('/testimonial/status/{id}', 'status')->name('testimonial.status');
+    });
+    // Banner Slider route part controller group------- 
+    Route::controller(BannerSliderController::class)->group(function () {
+        Route::get('/bannerSlider', 'index')->name('bannerSlider');
+        Route::post('/bannerSlider/store', 'store')->name('bannerSlider.store');
+        Route::post('/bannerSlider/update/{id}', 'update')->name('bannerSlider.update');
+        Route::get('/bannerSlider/manage', 'manage')->name('bannerSlider.manage');
+        Route::get('/bannerSlider/edit/{id}', 'edit')->name('bannerSlider.edit');
+        Route::get('/bannerSlider/delete/{id}', 'delete')->name('bannerSlider.delete');
+        Route::get('/bannerSlider/status/{id}', 'status')->name('bannerSlider.status');
     });
     //Career route part controller group------- 09
     Route::controller(CareerController::class)->group(function () {
@@ -237,6 +261,23 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/news/delete/{id}', 'delete')->name('news.delete');
         Route::get('/news/gimage/delete/{id}', 'gimagedelete')->name('gimage.delete');
         Route::get('/news/status/{id}', 'status')->name('news.status');
+    });
+     //Home element part controller group------- 13
+     Route::controller(HomeElementcontroller::class)->group(function () {
+        Route::get('/home/about/element', 'aboutElement')->name('home.about.element');
+        Route::post('/home/about/element/store', 'aboutElementStore')->name('home.about.element.store');
+        Route::post('/home/about/element/update/{type}', 'aboutElementUpdate')->name('home.about.element.update');
+        
+        Route::get('/home/industrial/element', 'industrialElement')->name('home.industrial.element');   
+        Route::get('/home/industrial/element/manage', 'industrialElementManage')->name('home.industrial.element.manage');   
+        Route::post('/home/industrial/element/store', 'industrialElementStore')->name('home.industrial.element.store');
+        Route::get('/home/industrial/element/delete/{id}', 'industrialElementDelete')->name('home.industrial.element.delete');
+        Route::post('/home/industrial/element/update/{id}', 'industrialElementUpdate')->name('home.industrial.element.update');
+        Route::get('/home/industrial/element/edit/{id}', 'industrialElementEdit')->name('home.industrial.element.edit');
+        
+        Route::get('/home/contact/element', 'contactElement')->name('home.contact.element');   
+        Route::post('/home/contact/element/store', 'contactElementStore')->name('home.contact.element.store');
+        Route::post('/home/contact/element/update/{type}', 'contactElementUpdate')->name('home.contact.element.update');
     });
 
 

@@ -30,6 +30,30 @@
           </li>
         </ul>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed " data-bs-target="#components-nav-homepage" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('home.about.element*') || Route::is('home.industrial.element*')||Route::is('home.contact.element*')||Route::is('home.industrial.element.manage')||Route::is('home.industrial.element.edit')? '#f6f9ff' : '' }} ; ">
+          <i class="bi bi-menu-button-wide-fill"></i><span>Home Page Element</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav-homepage" class="nav-content collapse {{ Route::is('home.about.element*') || Route::is('home.industrial.element*')||Route::is('home.industrial.element.manage')||Route::is('home.industrial.element.edit')||Route::is('home.contact.element*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+ 
+          <li>
+            <a href="{{route('home.about.element')}}" class="{{ Route::is('home.about.element')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>About Element</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('home.industrial.element.manage')}}" class="{{ Route::is('home.industrial.element')||Route::is('home.industrial.element.manage')||Route::is('home.industrial.element.edit')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Industrial Element</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('home.contact.element')}}" class="{{ Route::is('home.contact.element')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Contact Element</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li>
 
 
 
@@ -76,10 +100,10 @@
         </ul>
       </li>
       <li class="nav-item ">
-        <a class="nav-link collapsed " data-bs-target="#components-nav-8" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.common*') ||Route::is('businessArea.edit*')? '#f6f9ff' : '' }} ; ">
+        <a class="nav-link collapsed " data-bs-target="#components-nav-business" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.common*') ||Route::is('businessArea.edit*')? '#f6f9ff' : '' }} ; ">
           <i class="bi bi-wallet-fill"></i><span>Business Area page</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav-8" class="nav-content collapse {{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.edit*')||Route::is('businessArea.common*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+        <ul id="components-nav-business" class="nav-content collapse {{ Route::is('businessArea*') || Route::is('businessArea.manage*') ||Route::is('businessArea.edit*')||Route::is('businessArea.common*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
  
           <li>
             <a href="{{route('businessArea')}}" class="{{ Route::is('businessArea')? 'active' : '' }}">
@@ -115,6 +139,44 @@
               <i class="bi bi-circle"></i><span>Career Common Info</span>
             </a>
           </li>
+        </ul>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed " data-bs-target="#components-nav-testimonial" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('testimonial*') || Route::is('testimonial.manage*') ||Route::is('testimonial.edit*')? '#f6f9ff' : '' }} ; ">
+          <i class="bi bi-wallet-fill"></i><span>Testimonial</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav-testimonial" class="nav-content collapse {{ Route::is('testimonial*') || Route::is('testimonial.manage*') ||Route::is('testimonial.edit*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+ 
+          <li>
+            <a href="{{route('testimonial')}}" class="{{ Route::is('testimonial')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add Testimonial</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('testimonial.manage')}}"  class="{{ Route::is('testimonial.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage Testimonial</span>
+            </a>
+          </li>
+         
+        </ul>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed " data-bs-target="#components-nav-bannerSlider" data-bs-toggle="collapse" href="#" style="background:{{ Route::is('bannerSlider*') || Route::is('bannerSlider.manage*') ||Route::is('bannerSlider.edit*')? '#f6f9ff' : '' }} ; ">
+          <i class="bi bi-wallet-fill"></i><span>Banner Slider</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav-bannerSlider" class="nav-content collapse {{ Route::is('bannerSlider*') || Route::is('bannerSlider.manage*') ||Route::is('bannerSlider.edit*')? 'show' : '' }} " data-bs-parent="#sidebar-nav">
+ 
+          <li>
+            <a href="{{route('bannerSlider')}}" class="{{ Route::is('bannerSlider')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Add Slider</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('bannerSlider.manage')}}"  class="{{ Route::is('bannerSlider.manage')? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Manage Slider</span>
+            </a>
+          </li>
+         
         </ul>
       </li>
     
