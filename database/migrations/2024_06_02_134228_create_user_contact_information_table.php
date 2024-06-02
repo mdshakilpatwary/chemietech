@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('common_header_banners', function (Blueprint $table) {
+        Schema::create('user_contact_information', function (Blueprint $table) {
             $table->id();
-            $table->string('b_title');
-            $table->text('b_textContent')->nullable();
-            $table->string('b_image');
-            $table->string('type')->uniqid();
-            $table->integer('status')->default(1);
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('subject');
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('common_header_banners');
+        Schema::dropIfExists('user_contact_information');
     }
 };

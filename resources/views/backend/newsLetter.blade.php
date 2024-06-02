@@ -1,12 +1,11 @@
 @extends('backend.master')
 @section('main_body_content_part')
 <div class="pagetitle">
-    <h1>Header Manage</h1>
+    <h1>News Letter Manage</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-        <li class="breadcrumb-item">Header</li>
-        <li class="breadcrumb-item ">Banner</li>
+        <li class="breadcrumb-item ">News letter</li>
         <li class="breadcrumb-item active">Manage</li>
       </ol>
     </nav>
@@ -19,52 +18,43 @@
 
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">All Header Banner </h5>
-                <a href="{{route('header.info')}}" class="btn btn-sm btn-success">Add</a>
+                <h5 class="card-title">All news letter </h5>
   
                 <!-- Table with stripped rows -->
                     
                     <div class="row">
                         <div class="col-md-12 col-xl-12 col-12 colsm-12" style="width: 100%; overflow-x: scroll;">
-                            <table class="table ">
+                            <table class="table table datatable">
                                 @php
                                 $sl = 1;
                                 @endphp
                                 <thead>
                                     <tr>
                                         <th>#Sl</th>
-                                        <th>Page name</th>
-                                        <th>Banner Title</th>
-                                        <th>Text-Content</th>
-                                        <th>Banner image</th>
+                                        <th>Email</th>
+                                        <th>Date & Time</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @if(count($banner_datas)>0)
-                                   @foreach($banner_datas as $banner_data)
+                                   @if(count($newsletters)>0)
+                                   @foreach($newsletters as $newsletter)
         
                                    <tr >
                                        <td>{{$sl++}}</td>
-                                       <td>{{$banner_data->type}}</td>
-                                       <td>{{$banner_data->b_title}}</td>
-                                       <td>{{Str::words($banner_data->b_textContent,5,'...')}}</td>
-                                       <td>
-                                           @if($banner_data->b_image != '')
-                                           <img src="{{asset($banner_data->b_image)}}" alt="" title="uoihyuy" style="width: 120px; height: 60px;">
-                                           @else 
-                                           Not upload image 
-                                           @endif
-                                       </td>
+                                       <td><a href="mailto:{{$newsletter->email}}">{{$newsletter->email}}</a></td>
+                                       <td>{{$newsletter->created_at->format('d/m/Y h:i A')}}</td>
+                                        <td>
+                                            Active
+                                        </td>
                                        <td >
-                                         <a href="{{route('header.info.delete',$banner_data->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>
-                                         <a href="{{route('header.info.edit',$banner_data->id)}}" class="btn btn-sm btn-outline-success">Edit</a>
-                                       </td>
+                                           <a href="{{route('news.letter.delete',$newsletter->id)}}" class="btn btn-sm btn-outline-danger">Delete</a>                                       </td>
                                    </tr>
                                @endforeach
                                @else
                                    <tr>
-                                    <td colspan="9" class="text-center"> No data added here</td>
+                                    <td colspan="5" class="text-center"> Data not found</td>
                                    </tr>
                                @endif
         

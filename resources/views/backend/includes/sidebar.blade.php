@@ -261,6 +261,17 @@
           </li>
         </ul>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed " href="{{route('user.contact.manage')}}" style="background: {{ Route::is('user.contact.info')? '#f6f9ff' : '' }} ;">
+          <i class="bi bi-box2-fill"></i><span> User Contact Info</span>
+        </a>
+        
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed " href="{{route('news.letter.manage')}}" style="background: {{ Route::is('news.letter.manage')? '#f6f9ff' : '' }} ;">
+          <i class="bi bi-box2-fill"></i><span> News Letter</span>
+        </a> 
+      </li>
     <!-- End Profile Page Nav -->
         {{-- <li class="nav-heading">Nave-Item</li> --}}
 

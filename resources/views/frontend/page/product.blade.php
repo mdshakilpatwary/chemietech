@@ -19,6 +19,15 @@ $pageTitle =$category->name;
 
 @if(count($subcats) > 0)
 @foreach($subcats as $subcat)
+<style>
+    .more-content {
+        display: none;
+    }
+    .read-more {
+        color: blue;
+        cursor: pointer;
+    }
+</style>
     <!-- Product(ceramic) Start -->
     @php
     $products = Product::where('cat_id', $category->id)->where('subcat_id',$subcat->id)->where('status',1)->orderBy('id','desc')->get();
@@ -37,11 +46,20 @@ $pageTitle =$category->name;
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="service-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{asset($product->image)}}" alt="">
+                                <img class="img-fluid" src="{{asset($product->image)}}" alt="" style="width: 100%; height: 300px;">
                             </div>
                             <div class="p-4 text-center border border-5 border-light border-top-0">
                                 <h4 class="mb-3">{{$product->name}}</h4>
-                                <small>{{$product->description}}</small>
+                                {{-- <small>{{$product->description}}</small> --}}
+                                <div>
+                                    <p>
+                                        {{ Str::words($product->description, 10, '') }}
+                                        @if (str_word_count($product->description) > 10)
+                                            <span class="more-content">{{ Str::substr($product->description, strlen(Str::words($product->description, 10, ''))) }}</span>
+                                            <span class="read-more">Read More</span>
+                                        @endif
+                                    </p>
+                                </div>
                                 <!-- <a class="fw-medium" href="">Read More<i class="fa fa-arrow-right ms-2"></i></a> -->
                             </div>
                         </div>
@@ -58,5 +76,18 @@ $pageTitle =$category->name;
 <h5 class="alert text-center">No Product Found</h5>
 @endif
  
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    
+    $(document).ready(function() {
+        $('.read-more').click(function() {
+            $(this).prev('.more-content').toggle();
+            if ($(this).text() === 'Read More') {
+                $(this).text('Read Less');
+            } else {
+                $(this).text('Read More');
+            }
+        });
+    });
+</script>
 @endsection

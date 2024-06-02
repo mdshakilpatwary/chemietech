@@ -202,87 +202,7 @@ $pageTitle ='CHEMIE TECH - Raw Materials, Chemicals & Technology';
             </div>
         </div>
     </div>
-    <!-- Our Products End -->
 
-    <!-- Our Hero Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">Our Heroes</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="{{asset('frontend')}}/img/team-1.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="{{asset('frontend')}}/img/team-2.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="{{asset('frontend')}}/img/team-3.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item">
-                        <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="{{asset('frontend')}}/img/team-4.jpg" alt="">
-                            <div class="team-social">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- Our Hero End -->
 
     <!-- Lets Connect Start -->
     <div class="container-fluid bg-light overflow-hidden my-5 px-lg-0">
@@ -303,22 +223,38 @@ $pageTitle ='CHEMIE TECH - Raw Materials, Chemicals & Technology';
                             <h1 class="display-5 mb-4">{{$homeContact->title}}</h1>
                         </div>
                         <p class="mb-4 pb-2">{{$homeContact->description}}</p>
-                        <form>
+                        <form action="{{route('user.contact.store')}}" method="post">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" name="name" class="form-control border-0" value="{{old('name')}}" placeholder="Your Name" style="height: 55px;" required>
+                                    @error('name')
+                                    <p class="text-danger">{{$message}}</p>           
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input type="email" name="email" class="form-control border-0" value="{{old('email')}}" placeholder="Your Email" style="height: 55px;" required>
+                                    @error('email')
+                                    <p class="text-danger">{{$message}}</p>           
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
+                                    <input type="text" name="phone" class="form-control border-0" value="{{old('phone')}}" placeholder="Your Mobile" style="height: 55px;" required>
+                                    @error('phone')
+                                    <p class="text-danger">{{$message}}</p>           
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control border-0" placeholder="Subject" style="height: 55px;">
+                                    <input type="text" name="subject" class="form-control border-0" placeholder="Subject" value="{{old('subject')}}" style="height: 55px;" required>
+                                    @error('subject')
+                                    <p class="text-danger">{{$message}}</p>           
+                                    @enderror
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control border-0" placeholder="Your Special Note/Message"></textarea>
+                                    <textarea class="form-control border-0" name="message" placeholder="Your Special Note/Message" required>{{old('message')}}</textarea>
+                                    @error('message')
+                                    <p class="text-danger">{{$message}}</p>           
+                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
@@ -369,7 +305,7 @@ $pageTitle ='CHEMIE TECH - Raw Materials, Chemicals & Technology';
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="service-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{asset($newsevent->image)}}" alt="" style="width: 100%;">
+                                <img class="img-fluid" src="{{asset($newsevent->image)}}" alt="" style="width: 100%; height: 300px;">
                             </div>
                             <div class="p-4 text-center border border-5 border-light border-top-0">
                                 <h4 class="mb-3">{{$newsevent->title}}</h4>

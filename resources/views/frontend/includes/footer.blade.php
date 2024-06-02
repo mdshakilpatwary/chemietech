@@ -40,8 +40,15 @@ $siteInfoData = siteInfoData();
                   <h4 class="mb-4">Newsletter</h4><hr>
                   <p>Stay informed and connected with the latest updates by subscribing to our Newsletter & Events today!</p>
                   <div class="position-relative mx-auto" style="max-width: 400px;">
-                      <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                      <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Save</button>
+                   <form action="{{route('news.letter.store')}}" method="post">
+                    @csrf
+                    <input class="form-control border-0 w-100 py-3 ps-4 pe-5" name="email" value="{{old('email')}}" type="text" placeholder="Your email" required>
+                      
+                    <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Save</button>
+                  @error('email')
+                  <p class="text-danger">{{$message}}</p>           
+                  @enderror
+                   </form>
                   </div>
                   <hr>
                   <div class="d-flex pt-2">

@@ -31,7 +31,7 @@ class NewsController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $request->file('image');
             $customName = 'product' . rand() . '.' . $image->getClientOriginalExtension();            
-            $img = $manager->read($image)->resize(400,350);          
+            $img = $manager->read($image);          
             $img->toPng(80)->save(public_path('uploads/news/'.$customName)); 
             $imagePath= 'uploads/news/'.$customName;
  
@@ -52,7 +52,7 @@ class NewsController extends Controller
             foreach($group_image as $g_image){
                 $groupImageManager = new ImageManager(new Driver());
                 $customNameImage = 'newsImage' . rand() . '.' . $g_image->getClientOriginalExtension();
-                $g_img = $groupImageManager->read($g_image)->resize(500,400);            
+                $g_img = $groupImageManager->read($g_image);            
                 $g_img->toJpeg(80)->save(public_path('uploads/news/'.$customNameImage)); 
                 $group_image = new GroupImage;
                 $group_image->news_id = $newsid;
@@ -102,7 +102,7 @@ class NewsController extends Controller
             $manager = new ImageManager(new Driver());
             $image = $request->file('image');
             $customName = 'product' . rand() . '.' . $image->getClientOriginalExtension();            
-            $img = $manager->read($image)->resize(400,350);          
+            $img = $manager->read($image);          
             $img->toPng(80)->save(public_path('uploads/news/'.$customName)); 
             $imagePath= 'uploads/news/'.$customName;
             $news->image = $imagePath;
@@ -115,7 +115,7 @@ class NewsController extends Controller
             foreach($group_image as $g_image){
                 $groupImageManager = new ImageManager(new Driver());
                 $customNameImage = 'newsImage' . rand() . '.' . $g_image->getClientOriginalExtension();
-                $g_img = $groupImageManager->read($g_image)->resize(500,400);            
+                $g_img = $groupImageManager->read($g_image);            
                 $g_img->toJpeg(80)->save(public_path('uploads/news/'.$customNameImage)); 
                 $group_image = new GroupImage;
                 $group_image->news_id = $id;

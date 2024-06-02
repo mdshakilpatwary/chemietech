@@ -2,17 +2,23 @@
 use App\Models\CommonHeaderBanner;
 use App\Models\AboutPageElement;
 $pageTitle ='Association & Memberships';
-
 ?>
 
 @extends('frontend.master')
 @section('mainContent')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5">
-      <div class="container py-5">
-          <h1 class="display-3 text-white mb-3 animated slideInDown text-center">Association & Membership</h1>
-      </div>
-  </div>
+    @php
+    $pageHeaderBanner =CommonHeaderBanner::where('type','Memberships')->first();
+    @endphp
+    @if($pageHeaderBanner != null)
+    <div class="container-fluid page-header py-5 mb-5" style="background-image: url({{asset($pageHeaderBanner->b_image)}}); background-size:cover; background-position:center center;">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">{{$pageHeaderBanner->b_title}}</h1>
+            <p class="breadcrumb text-center text-light">{{$pageHeaderBanner->b_textContent}}</p>
+
+        </div>
+    </div>
+  @endif
   <!-- Page Header End -->
 
 

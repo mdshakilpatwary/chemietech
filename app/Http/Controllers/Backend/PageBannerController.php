@@ -16,19 +16,16 @@ class PageBannerController extends Controller
     }
     public function store(Request $request){
         $request->validate([
-            'b_image' => 'image|mimes:jpeg,png,jpg,gif|max:5048',
-            'b_title' => 'max:200',
-            'b_subTitle' => 'max:100',
-            'b_textContent' => 'max:250',
-            'b_quote' => 'max:300',
+            'b_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5048',
+            'b_title' => 'required|max:180',
+            'b_textContent' => 'max:300',
+           
             'page_type' => 'required|unique:common_header_banners,type',
         ]);
 
         $headerInfo=new CommonHeaderBanner;
         $headerInfo->b_title =$request->b_title ;
-        $headerInfo->b_subTitle =$request->b_subTitle ;
         $headerInfo->b_textContent =$request->b_textContent ;
-        $headerInfo->b_quote =$request->b_quote ;
         $headerInfo->type = $request->page_type ;
 
         if($request->file('b_image')){
@@ -39,9 +36,9 @@ class PageBannerController extends Controller
             $image = $request->file('b_image');
 
             $customName = 'banner' . rand() . '.' . $image->getClientOriginalExtension();  
-            $img = $manager->read($image)->resize(1800,1200);          
+            $img = $manager->read($image);          
             $img->toJpeg(100)->save(public_path('uploads/banner/'.$customName));          
-            $headerInfo->b_image= $customName;
+            $headerInfo->b_image= 'uploads/banner/'.$customName;
  
         }
         $msg =$headerInfo->save();
@@ -67,26 +64,22 @@ class PageBannerController extends Controller
         $banner_data =CommonHeaderBanner::findOrFail($id);
         $request->validate([
             'b_image' => 'image|mimes:jpeg,png,jpg,gif|max:5048',
-            'b_title' => 'max:200',
-            'b_subTitle' => 'max:100',
-            'b_textContent' => 'max:250',
-            'b_quote' => 'max:300',
+            'b_title' => 'required|max:180',
+            'b_textContent' =>'max:300',
+
         ]);
         $banner_data->b_title =$request->b_title ;
-        $banner_data->b_subTitle =$request->b_subTitle ;
         $banner_data->b_textContent =$request->b_textContent ;
-        $banner_data->b_quote =$request->b_quote ;
-
         if($request->file('b_image')){
             $manager = new ImageManager(new Driver());
-            if(File::exists(public_path('uploads/banner/'.$banner_data->b_image))){
-                File::delete(public_path('uploads/banner/'.$banner_data->b_image));
+            if(File::exists(public_path($banner_data->b_image))){
+                File::delete(public_path($banner_data->b_image));
             }
             $image = $request->file('b_image');
             $customName = 'banner' . rand() . '.' . $image->getClientOriginalExtension();            
-            $img = $manager->read($image)->resize(1800,1200);          
+            $img = $manager->read($image);          
             $img->toJpeg(100)->save(public_path('uploads/banner/'.$customName));  
-            $banner_data->b_image= $customName;
+            $banner_data->b_image= 'uploads/banner/'.$customName;
  
         }
         $msg =$banner_data->update();
@@ -102,8 +95,8 @@ class PageBannerController extends Controller
         $banner_data =CommonHeaderBanner::findOrFail($id);
         $msg = $banner_data->delete();
         if($msg){
-            if(File::exists(public_path('uploads/banner/'.$banner_data->b_image))){
-                File::delete(public_path('uploads/banner/'.$banner_data->b_image));
+            if(File::exists(public_path($banner_data->b_image))){
+                File::delete(public_path($banner_data->b_image));
             }
             return back()->with('success','Data Successfully Deleted.');
         }

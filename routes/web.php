@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\BusinessAreaController;
 use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\HomeElementcontroller;
 use App\Http\Controllers\Backend\BannerSliderController;
+use App\Http\Controllers\Frontend\UserContactController;
 // use App\Http\Controllers\Backend\MenuController;
 use Illuminate\Support\Facades\Route;
 
@@ -278,6 +279,15 @@ Route::middleware('auth','role:Admin')->group(function () {
         Route::get('/home/contact/element', 'contactElement')->name('home.contact.element');   
         Route::post('/home/contact/element/store', 'contactElementStore')->name('home.contact.element.store');
         Route::post('/home/contact/element/update/{type}', 'contactElementUpdate')->name('home.contact.element.update');
+    });
+     //Home element part controller group------- 14
+     Route::controller(UserContactController::class)->group(function () {
+        Route::get('/user/contact/info', 'userContactManage')->name('user.contact.manage');
+        Route::get('/user/contact/info/delete/{id}', 'userContactDelete')->name('user.contact.delete');
+
+        Route::get('/news/letter/manage', 'newsLetterManage')->name('news.letter.manage');
+        Route::get('/news/letter/delete/{id}', 'newsLetterDelete')->name('news.letter.delete');
+
     });
 
 

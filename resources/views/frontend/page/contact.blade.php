@@ -9,11 +9,17 @@ $pageTitle ='Contact';
 @extends('frontend.master')
 @section('mainContent')
   <!-- Page Header Start -->
-  <div class="container-fluid page-header py-5 mb-5">
-    <div class="container py-5">
-        <h1 class="display-3 text-white mb-3 animated slideInDown text-center">Let's connect!</h1>
+  @php
+    $pageHeaderBanner =CommonHeaderBanner::where('type','Contacts')->first();
+    @endphp
+    @if($pageHeaderBanner != null)
+    <div class="container-fluid page-header py-5 mb-5" style="background-image: url({{asset($pageHeaderBanner->b_image)}}); background-size:cover; background-position:center center;">
+        <div class="container py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">{{$pageHeaderBanner->b_title}}</h1>
+            <p class="breadcrumb text-center text-light">{{$pageHeaderBanner->b_textContent}}</p>
+        </div>
     </div>
-</div>
+@endif
 <!-- Page Header End -->
 
 <!-- Contact info Start -->
@@ -150,22 +156,38 @@ $pageTitle ='Contact';
                     </div>
                     <p class="mb-4">{{$contact->description}}</p>
                     @endif
-                    <form>
+                    <form action="{{route('user.contact.store')}}" method="post">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
+                                <input type="text" name="name" class="form-control border-0" value="{{old('name')}}" placeholder="Your Name" style="height: 55px;" required>
+                                @error('name')
+                                <p class="text-danger">{{$message}}</p>           
+                                @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" name="email" class="form-control border-0" value="{{old('email')}}" placeholder="Your Email" style="height: 55px;" required>
+                                @error('email')
+                                <p class="text-danger">{{$message}}</p>           
+                                @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
+                                <input type="text" name="phone" class="form-control border-0" value="{{old('phone')}}" placeholder="Your Mobile" style="height: 55px;" required>
+                                @error('phone')
+                                <p class="text-danger">{{$message}}</p>           
+                                @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                                <input type="text" class="form-control border-0" placeholder="Subject" style="height: 55px;">
+                                <input type="text" name="subject" class="form-control border-0" placeholder="Subject" value="{{old('subject')}}" style="height: 55px;" required>
+                                @error('subject')
+                                <p class="text-danger">{{$message}}</p>           
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control border-0" placeholder="Your Special Note/Message"></textarea>
+                                <textarea class="form-control border-0" name="message" placeholder="Your Special Note/Message" required>{{old('message')}}</textarea>
+                                @error('message')
+                                <p class="text-danger">{{$message}}</p>           
+                                @enderror
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>

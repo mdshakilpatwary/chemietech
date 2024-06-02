@@ -47,7 +47,7 @@ $pageTitle = $newsevent->title;
                         <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s" >
                             <div class="rounded overflow-hidden">
                                 <div class="position-relative overflow-hidden">
-                                    <img class="img-fluid w-100" src="{{asset($newsGroupImage->group_image)}}" alt="">
+                                    <img class="img-fluid w-100" src="{{asset($newsGroupImage->group_image)}}" alt="" style="width: 100%; height: 300px;">
                                     <div class="portfolio-overlay">
                                         <a class="btn btn-square btn-outline-light mx-1" href="{{asset($newsGroupImage->group_image)}}" data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
                                     </div>

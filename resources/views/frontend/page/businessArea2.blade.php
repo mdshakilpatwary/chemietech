@@ -8,14 +8,17 @@ $pageTitle ='Import for Local Stock of Supply';
 @extends('frontend.master')
 @section('mainContent')
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5">
+    @php
+    $pageHeaderBanner =CommonHeaderBanner::where('type','StockandSupply')->first();
+    @endphp
+    @if($pageHeaderBanner != null)
+    <div class="container-fluid page-header py-5 mb-5" style="background-image: url({{asset($pageHeaderBanner->b_image)}}); background-size:cover; background-position:center center;">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">Representation of Foreign Partner</h1>
-            <p class="breadcrumb text-center text-light">
-                Our global representation includes over 18+ supply corporations that are committed to supporting and developing Bangladesh's ceramic, glass, and related industries at a significant level.
-            </p>
+            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">{{$pageHeaderBanner->b_title}}</h1>
+            <p class="breadcrumb text-center text-light">{{$pageHeaderBanner->b_textContent}}</p>
         </div>
     </div>
+    @endif
     <!-- Page Header End -->
 
 

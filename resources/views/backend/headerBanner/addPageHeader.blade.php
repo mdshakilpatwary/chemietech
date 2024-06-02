@@ -30,14 +30,17 @@
                         <div class="form-group mb-3">
                             <label class="col-form-label">Select Page</label>
                             <select name="page_type" class="form-select" aria-label="Default select example">
-                                <option disabled selected>---Please Select---</option>
-                                <option value="home">Home</option>
-                                <option value="about">About</option>
-                                <option value="expertise">Expertise</option>
-                                <option value="product">Product</option>
-                                <option value="csr">Csr</option>
-                                <option value="career">Career</option>
-                                <option value="contact">Contact</option>
+                                <option disabled selected>---Please Select Page---</option>
+                                <option value="Memberships">Association & Membership</option>
+                                <option value="Certifications">Certification</option>
+                                <option value="Principals">Our Principal</option>
+                                <option value="Clients">Our Clients</option>
+                                <option value="ForeignPartner">Foreign Partner</option>
+                                <option value="StockandSupply">Stock and Supply</option>
+                                <option value="SolutionofConsultancy">Solution of Consultancy</option>
+                                <option value="News&Events">News & Events</option>
+                                <option value="Careers">Career</option>
+                                <option value="Contacts">Contact</option>
                               </select>
                             @error('page_type')
                             <p class="text-danger">{{$message}}</p>
@@ -51,27 +54,15 @@
                             <p class="text-danger">{{$message}}</p>           
                             @enderror
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Sub Title <span style="color: #6b6868">(Optional)</span></label>
-                            <input type="text" class="form-control" name="b_subTitle" value="{{old('b_subTitle')}}">
-                            @error('b_subTitle')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
+                        
                         <div class="form-group mb-3">
                             <label for="inputText" class="col-form-label">Text content <span style="color: #6b6868">(Optional)</span></label>
-                            <input type="text" class="form-control" name="b_textContent" value="{{old('b_textContent')}}">
+                            <textarea class="form-control" name="b_textContent" id="" cols="5" rows="5">{{old('b_textContent')}}</textarea>
                             @error('b_textContent')
                             <p class="text-danger">{{$message}}</p> 
                             @enderror
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Header Quote</label>
-                            <input type="text" class="form-control" name="b_quote" value="{{old('b_quote')}}">
-                            @error('b_quote')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
+                        
                         <div class="form-group mb-3">
                             <label for="inputNumber" class=" col-form-label">Banner Image <span style="color: #6b6868">(resolution 1800x800 )</span></label>
                             <img src="" alt="" class="change_image mb-2" style="width: 200px; height: 150px; display:block;">

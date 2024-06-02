@@ -45,30 +45,18 @@
                             <p class="text-danger">{{$message}}</p>           
                             @enderror
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Sub Title <span style="color: #6b6868">(Optional)</span></label>
-                            <input type="text" class="form-control" name="b_subTitle" value="{{$banner_data->b_subTitle}}">
-                            @error('b_subTitle')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
+                        
                         <div class="form-group mb-3">
                             <label for="inputText" class="col-form-label">Text content <span style="color: #6b6868">(Optional)</span></label>
-                            <input type="text" class="form-control" name="b_textContent" value="{{$banner_data->b_textContent}}">
+                            <textarea class="form-control" name="b_textContent" id="" cols="5" rows="5">{{$banner_data->b_textContent}}</textarea>
                             @error('b_textContent')
                             <p class="text-danger">{{$message}}</p> 
                             @enderror
                         </div>
-                        <div class="form-group mb-3">
-                            <label for="inputText" class="col-form-label">Header Quote</label>
-                            <input type="text" class="form-control" name="b_quote" value="{{$banner_data->b_quote}}" >
-                            @error('b_quote')
-                            <p class="text-danger">{{$message}}</p> 
-                            @enderror
-                        </div>
+    
                         <div class="form-group mb-3">
                             <label for="inputNumber" class=" col-form-label">Banner Image <span style="color: #6b6868">(resolution 1800x800 )</span></label>
-                            <img src="{{asset('uploads/banner/'.$banner_data->b_image)}}" alt="" class="change_image mb-2" style="width: 200px; height: 150px; display:block;">
+                            <img src="{{asset($banner_data->b_image)}}" alt="" class="change_image mb-2" style="width: 200px; height: 150px; display:block;">
                             <input class="form-control file_image" type="file" id="formFile" name="b_image">
                             @error('b_image')
                             <p class="text-danger">{{$message}}</p> 

@@ -9,11 +9,17 @@ $pageTitle ='News Event';
 @section('mainContent')
 
     <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5">
+    @php
+    $pageHeaderBanner =CommonHeaderBanner::where('type','News&Events')->first();
+    @endphp
+    @if($pageHeaderBanner != null)
+    <div class="container-fluid page-header py-5 mb-5" style="background-image: url({{asset($pageHeaderBanner->b_image)}}); background-size:cover; background-position:center center;">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">News & Events</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown text-center">{{$pageHeaderBanner->b_title}}</h1>
+            <p class="breadcrumb text-center text-light">{{$pageHeaderBanner->b_textContent}}</p>
         </div>
     </div>
+    @endif
     <!-- Page Header End -->
 
 
@@ -29,7 +35,7 @@ $pageTitle ='News Event';
                     <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="service-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{asset($newsevent->image)}}" alt="" style="width: 100%;">
+                                <img class="img-fluid" src="{{asset($newsevent->image)}}" alt="" style="width: 100%; height: 300px;">
                             </div>
                             <div class="p-4 text-center border border-5 border-light border-top-0">
                                 <h4 class="mb-3">{{$newsevent->title}}</h4>
@@ -39,10 +45,13 @@ $pageTitle ='News Event';
                         </div>
                     </div>
                 @endforeach
+                @if(count($newsevents) >9)
                 <div class="blog-filter pt-4" style="display: flex; justify-content:space-around;">
                     <span class="store-qty" style="padding:0 10px; font-size: 20px">Showing {{ $newsevents->firstItem() }} - {{ $newsevents->lastItem() }} News Event</span>
                     
                     <div class="">
+                        
+                       
                         <div class="custom-pagination text-center">
                             <div class="pagination" >
                                 {{-- Previous Page Link --}}
@@ -69,9 +78,9 @@ $pageTitle ='News Event';
                                 @endif
                             </div>
                         </div>
-        
                     </div>
                 </div>
+                @endif
                 @else
                 <h5 class="alert alert-info text-center">Data Did Not Uploaded</h5>
                 @endif
